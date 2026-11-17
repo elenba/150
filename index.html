@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Invited! | Birthday Celebration</title>
+  <!-- Google Fonts for sleek typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #FAF8F5;
+      --card-bg: #FFFFFF;
+      --text-main: #1F2421;
+      --text-muted: #5C6460;
+      --accent: #C85A32; /* Warm terracotta/sunset accent */
+      --accent-hover: #A84623;
+      --border: #E6E1D8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Hero Section */
+    header {
+      text-align: center;
+      padding: 2rem 0 3rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-rsvp {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-rsvp:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .time-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1.1rem;
+      min-width: 75px;
+      text-align: center;
+    }
+
+    .time-box span {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .time-box small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* Event Details Grid */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .detail-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .detail-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .detail-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .detail-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .detail-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* RSVP Section */
+    .rsvp-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .rsvp-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .rsvp-section > p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    /* Form Placeholder Styling (Remove once you paste your iframe) */
+    .form-placeholder {
+      border: 2px dashed #D3CBC0;
+      border-radius: 12px;
+      padding: 3rem 1.5rem;
+      background-color: #FAF8F5;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- HERO SECTION -->
+    <header>
+      <div class="eyebrow">Join Us To Celebrate</div>
+      <!-- EDIT YOUR TITLE & SUBTITLE BELOW -->
+      <h1>150 Birthday Celebration</h1>
+      <p class="subtitle">
+        Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
+      </p>
+      <a href="#rsvp" class="btn-rsvp">RSVP Now</a>
+
+      <!-- LIVE COUNTDOWN TIMER -->
+      <div class="countdown" id="countdown">
+        <div class="time-box"><span id="days">00</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
+      </div>
+    </header>
+
+    <!-- EVENT DETAILS CARDS -->
+    <section class="details-grid">
+      <div class="detail-card">
+        <h3>When</h3>
+        <p>Saturday, March 20, 2027<br>7:00 PM – Late</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Where</h3>
+        <p>Plaza de Toros<br>Fuengirola, Spain</p>
+        <!-- Replace # with your Google Maps link -->
+        <a href="#" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
+      </div>
+
+      <div class="detail-card">
+        <h3>Dress Code</h3>
+        <p>Smart Casual / Festive<br>Comfortable shoes recommended</p>
+      </div>
+    </section>
+
+    <!-- RSVP FORM SECTION -->
+    <section class="rsvp-section" id="rsvp">
+      <h2>Kindly RSVP</h2>
+      <p>Please let us know if you can make it by October 1st.</p>
+
+      <!-- =====================================================================
+           REPLACE THE DIV BELOW WITH YOUR TALLY.SO OR GOOGLE FORM EMBED CODE
+           ===================================================================== -->
+      <div class="form-placeholder">
+        <strong><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" width="640" height="777" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></strong><br><br>
+        Paste the <code>&lt;iframe&gt;</code> embed code from Tally.so or Google Forms right here.
