@@ -181,13 +181,17 @@
       font-size: 0.95rem;
     }
 
-    /* Form Placeholder Styling (Remove once you paste your iframe) */
-    .form-placeholder {
-      border: 2px dashed #D3CBC0;
-      border-radius: 12px;
-      padding: 3rem 1.5rem;
-      background-color: #FAF8F5;
-      color: var(--text-muted);
+    /* Form Embed Container */
+    .form-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .form-container iframe {
+      width: 100%;
+      max-width: 640px;
+      height: 777px;
+      border: none;
     }
 
     footer {
@@ -204,7 +208,6 @@
     <!-- HERO SECTION -->
     <header>
       <div class="eyebrow">Join Us To Celebrate</div>
-      <!-- EDIT YOUR TITLE & SUBTITLE BELOW -->
       <h1>150 Birthday Celebration</h1>
       <p class="subtitle">
         Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
@@ -228,8 +231,7 @@
 
       <div class="detail-card">
         <h3>Where</h3>
-        <p>Plaza de Toros<br>Calle Camino Jose Cela, 12, <br>29640 Fuengirola, Málaga, Spain</p>
-        <!-- Replace # with your Google Maps link -->
+        <p>Plaza de Toros<br>Calle Camino Jose Cela, 12,<br>29640 Fuengirola, Málaga, Spain</p>
         <a href="https://maps.app.goo.gl/K8UrGWNqYNoXMBYTA" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
       </div>
 
@@ -242,11 +244,41 @@
     <!-- RSVP FORM SECTION -->
     <section class="rsvp-section" id="rsvp">
       <h2>Kindly RSVP</h2>
-      <p>Please let us know if you can make it by January 1st</p>
+      <p>Please let us know if you can make it by January 1st.</p>
 
-      <!-- =====================================================================
-           REPLACE THE DIV BELOW WITH YOUR TALLY.SO OR GOOGLE FORM EMBED CODE
-           ===================================================================== -->
-      <div class="form-placeholder">
-        <strong><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" width="640" height="777" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></strong><br><br>
-        Paste the <code>&lt;iframe&gt;</code> embed code from Tally.so or Google Forms right here.
+      <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </section>
+
+    <footer>
+      Questions? Reach out directly via WhatsApp or email.
+    </footer>
+  </div>
+
+  <!-- COUNTDOWN SCRIPT -->
+  <script>
+    const partyDate = new Date("2027-03-20T19:00:00").getTime();
+
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = partyDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "<p><strong>The party has started!</strong></p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+    }, 1000);
+  </script>
+
+</body>
+</html>
