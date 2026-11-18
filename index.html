@@ -30,26 +30,61 @@
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      background-color: #2b2b2b; /* Fallback color */
+      background-color: #2b2b2b;
+    }
+
+    /* LANGUAGE SWITCHER BAR */
+    .lang-bar {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.3rem 0.6rem;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     /* HERO SECTION WITH BACKGROUND IMAGE POSITIONED ON THE SKY */
     .hero-banner {
       position: relative;
-      background-image: url('bg.jpg'); /* Loads bg.jpg from your GitHub repo */
+      background-image: url('bg.jpg');
       background-size: cover;
-      background-position: center top; /* Focuses on the top/sky portion of the photo */
+      background-position: center top;
       min-height: 85vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 4rem 1.5rem 6rem;
+      padding: 5rem 1.5rem 6rem;
       text-align: center;
       color: #FFFFFF;
     }
 
-    /* Dark subtle overlay to make white text pop over the bright blue sky */
+    /* Dark subtle overlay for text readability over sky */
     .hero-banner::after {
       content: '';
       position: absolute;
@@ -57,7 +92,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 60%, rgba(31,36,33,0.85) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 60%, rgba(31,36,33,0.9) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -114,7 +149,7 @@
       transform: translateY(-2px);
     }
 
-    /* Countdown Timer Over Sky */
+    /* Countdown Timer */
     .countdown {
       display: flex;
       justify-content: center;
@@ -149,7 +184,7 @@
       color: var(--text-muted);
     }
 
-    /* MAIN BODY CONTENT (Sits below the building graphic/hero) */
+    /* MAIN BODY CONTENT (Below building background) */
     .main-body {
       background-color: #FAF8F5;
       padding: 3rem 1.5rem 4rem;
@@ -201,6 +236,43 @@
       text-decoration: underline;
     }
 
+    /* FAQ Section */
+    .faq-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      text-align: left;
+    }
+
+    .faq-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    details {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-main);
+      font-size: 1.05rem;
+    }
+
+    details p {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
     /* RSVP Section */
     .rsvp-section {
       background: var(--card-bg);
@@ -208,7 +280,7 @@
       border-radius: 20px;
       padding: 2.5rem 1.5rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
     .rsvp-section h2 {
@@ -245,52 +317,75 @@
 </head>
 <body>
 
-  <!-- HERO BANNER (Title & Countdown placed over the sky of bg.jpg) -->
+  <!-- LANGUAGE SWITCHER TOGGLE -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLanguage('sv')" id="btn-sv">SV</button>
+  </div>
+
+  <!-- HERO BANNER -->
   <section class="hero-banner">
     <div class="hero-content">
-      <div class="eyebrow">Join Us To Celebrate</div>
-      <h1>150 Birthday Celebration</h1>
-      <p class="subtitle">
+      <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
+      <h1 data-i18n="title">150 Birthday Celebration</h1>
+      <p class="subtitle" data-i18n="subtitle">
         Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
       </p>
-      <a href="#rsvp" class="btn-rsvp">RSVP Now</a>
+      <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
 
       <!-- LIVE COUNTDOWN TIMER -->
       <div class="countdown" id="countdown">
-        <div class="time-box"><span id="days">00</span><small>Days</small></div>
-        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
-        <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
+        <div class="time-box"><span id="days">00</span><small data-i18n="daysLabel">Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small data-i18n="hoursLabel">Hours</small></div>
+        <div class="time-box"><span id="minutes">00</span><small data-i18n="minsLabel">Mins</small></div>
       </div>
     </div>
   </section>
 
-  <!-- REST OF THE PAGE CONTENT (Sits below the building background view) -->
+  <!-- REST OF THE PAGE CONTENT -->
   <div class="main-body">
     <div class="container">
       
       <!-- EVENT DETAILS CARDS -->
       <section class="details-grid">
         <div class="detail-card">
-          <h3>When</h3>
-          <p>Saturday, March 20, 2027<br>7:00 PM – Late</p>
+          <h3 data-i18n="whenTitle">When</h3>
+          <p data-i18n="whenText">Saturday, March 20, 2027<br>7:00 PM – Late</p>
         </div>
 
         <div class="detail-card">
-          <h3>Where</h3>
+          <h3 data-i18n="whereTitle">Where</h3>
           <p>Plaza de Toros<br>Calle Camino Jose Cela, 12,<br>29640 Fuengirola, Málaga, Spain</p>
-          <a href="https://maps.app.goo.gl/K8UrGWNqYNoXMBYTA" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
+          <a href="https://maps.app.goo.gl/K8UrGWNqYNoXMBYTA" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps &rarr;</a>
         </div>
 
         <div class="detail-card">
-          <h3>Dress Code</h3>
-          <p>Smart Casual / Festive<br>Comfortable shoes recommended</p>
+          <h3 data-i18n="dressTitle">Dress Code</h3>
+          <p data-i18n="dressText">Smart Casual / Festive<br>Comfortable shoes recommended</p>
         </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="faq-section">
+        <h2 data-i18n="faqHeading">Frequently Asked Questions</h2>
+        <details>
+          <summary data-i18n="faq1Q">Are children welcome?</summary>
+          <p data-i18n="faq1A">Please check your invitation details or reach out to us directly regarding family attendance.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq2Q">Is there parking available?</summary>
+          <p data-i18n="faq2A">Yes, street parking and nearby parking garages are available around the Plaza de Toros.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq3Q">Dietary requirements?</summary>
+          <p data-i18n="faq3A">Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.</p>
+        </details>
       </section>
 
       <!-- RSVP FORM SECTION -->
       <section class="rsvp-section" id="rsvp">
-        <h2>Kindly RSVP</h2>
-        <p>Please let us know if you can make it by January 1st.</p>
+        <h2 data-i18n="rsvpHeading">Kindly RSVP</h2>
+        <p data-i18n="rsvpSub">Please let us know if you can make it by January 1st.</p>
 
         <div class="form-container">
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
@@ -298,14 +393,100 @@
       </section>
 
       <footer>
-        Questions? Reach out directly via WhatsApp or email.
+        <span data-i18n="footerText">Questions? Reach out directly via WhatsApp or email.</span>
       </footer>
 
     </div>
   </div>
 
-  <!-- COUNTDOWN SCRIPT -->
+  <!-- TRANSLATION & COUNTDOWN SCRIPT -->
   <script>
+    // Translations Dictionary
+    const translations = {
+      en: {
+        eyebrow: "Join Us To Celebrate",
+        title: "150 Birthday Celebration",
+        subtitle: "Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!",
+        rsvpBtn: "RSVP Now",
+        daysLabel: "Days",
+        hoursLabel: "Hours",
+        minsLabel: "Mins",
+        whenTitle: "When",
+        whenText: "Saturday, March 20, 2027<br>7:00 PM – Late",
+        whereTitle: "Where",
+        mapLink: "View on Google Maps &rarr;",
+        dressTitle: "Dress Code",
+        dressText: "Smart Casual / Festive<br>Comfortable shoes recommended",
+        faqHeading: "Frequently Asked Questions",
+        faq1Q: "Are children welcome?",
+        faq1A: "Please check your invitation details or reach out to us directly regarding family attendance.",
+        faq2Q: "Is there parking available?",
+        faq2A: "Yes, street parking and nearby parking garages are available around the Plaza de Toros.",
+        faq3Q: "Dietary requirements?",
+        faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
+        rsvpHeading: "Kindly RSVP",
+        rsvpSub: "Please let us know if you can make it by January 1st.",
+        footerText: "Questions? Reach out directly via WhatsApp or email."
+      },
+      sv: {
+        eyebrow: "Välkommen att fira med oss",
+        title: "150-års Födelsedagsfest",
+        subtitle: "Nina 20 + Elin 50 + Marianne 80! God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
+        rsvpBtn: "OSA Här",
+        daysLabel: "Dagar",
+        hoursLabel: "Timmar",
+        minsLabel: "Min",
+        whenTitle: "När",
+        whenText: "Lördag 20 mars 2027<br>Kl. 19:00 – Sent",
+        whereTitle: "Var",
+        mapLink: "Visa på Google Maps &rarr;",
+        dressTitle: "Klädsel",
+        dressText: "Klädsel: Vårdad klädsel / Festligt<br>Bekväma skor rekommenderas",
+        faqHeading: "Vanliga Frågor",
+        faq1Q: "Är barn välkomna?",
+        faq1A: "Vänligen kontrollera din inbjudan eller hör av dig direkt till oss om familjen följer med.",
+        faq2Q: "Finns det parkering?",
+        faq2A: "Ja, gatuparkering och närliggande parkeringshus finns runt Plaza de Toros.",
+        faq3Q: "Specialkost?",
+        faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
+        rsvpHeading: "Vänligen OSA",
+        rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
+        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Update active toggle button style
+      document.getElementById("btn-en").classList.toggle("active", lang === 'en');
+      document.getElementById("btn-sv").classList.toggle("active", lang === 'sv');
+
+      // Save preference
+      localStorage.setItem("preferred_lang", lang);
+    }
+
+    // Auto-detect browser language on first load
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("preferred_lang");
+      if (savedLang && translations[savedLang]) {
+        setLanguage(savedLang);
+      } else {
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang && browserLang.toLowerCase().startsWith("sv")) {
+          setLanguage("sv");
+        } else {
+          setLanguage("en"); // Defaults to UK English
+        }
+      }
+    });
+
+    // Countdown Timer Logic
     const partyDate = new Date("2027-03-20T19:00:00").getTime();
 
     const timer = setInterval(function() {
@@ -314,7 +495,7 @@
 
       if (distance < 0) {
         clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "<p><strong>The party has started!</strong></p>";
+        document.getElementById("countdown").innerHTML = "<p><strong>The party has started! / Festen har börjat!</strong></p>";
         return;
       }
 
