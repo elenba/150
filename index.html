@@ -7,7 +7,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -16,7 +16,8 @@
       --text-muted: #5C6460;
       --accent: #C85A32;
       --accent-hover: #A84623;
-      --border: #E6E1D8;
+      --border: #E8E2D5;
+      --gold-glow: rgba(200, 90, 50, 0.15);
     }
 
     * {
@@ -30,7 +31,7 @@
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      background-color: #2b2b2b;
+      background-color: #FAF6F0;
     }
 
     /* LANGUAGE SWITCHER BAR */
@@ -40,11 +41,12 @@
       right: 1.5rem;
       z-index: 10;
       display: flex;
-      gap: 0.5rem;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 0.3rem 0.6rem;
+      gap: 0.3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.35rem 0.6rem;
       border-radius: 50px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .lang-btn {
@@ -52,23 +54,24 @@
       border: none;
       color: #FFFFFF;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       padding: 0.3rem 0.7rem;
       border-radius: 20px;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .lang-btn.active {
       background: var(--accent);
+      box-shadow: 0 2px 8px rgba(200, 90, 50, 0.4);
     }
 
     .lang-btn:hover:not(.active) {
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* HERO SECTION WITH BACKGROUND IMAGE POSITIONED ON THE SKY */
+    /* HERO SECTION WITH BACKGROUND IMAGE */
     .hero-banner {
       position: relative;
       background-image: url('bg.jpg');
@@ -84,7 +87,6 @@
       color: #FFFFFF;
     }
 
-    /* Dark subtle overlay for text readability over sky */
     .hero-banner::after {
       content: '';
       position: absolute;
@@ -92,7 +94,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 60%, rgba(31,36,33,0.9) 100%);
+      background: linear-gradient(to bottom, rgba(15,20,18,0.4) 0%, rgba(15,20,18,0.2) 50%, rgba(31,36,33,0.92) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -106,29 +108,30 @@
 
     .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.85rem;
-      font-weight: 600;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: #FFD29D;
-      margin-bottom: 0.75rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 0.8rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.8rem, 6.5vw, 4.2rem);
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       color: #FFFFFF;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      text-shadow: 0 3px 12px rgba(0,0,0,0.6);
     }
 
     .subtitle {
       font-size: 1.15rem;
-      color: #F0EDE6;
+      color: #F4F0EA;
       max-width: 580px;
-      margin: 0 auto 2rem;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      margin: 0 auto 2.5rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+      font-weight: 400;
     }
 
     .btn-rsvp {
@@ -136,86 +139,96 @@
       background-color: var(--accent);
       color: #FFFFFF;
       text-decoration: none;
-      padding: 0.85rem 2.2rem;
+      padding: 0.9rem 2.4rem;
       border-radius: 50px;
       font-weight: 600;
       font-size: 0.95rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: background-color 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 6px 20px rgba(200, 90, 50, 0.4);
+      transition: all 0.2s ease;
+      border: none;
     }
 
     .btn-rsvp:hover {
       background-color: var(--accent-hover);
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 90, 50, 0.5);
     }
 
-    /* Countdown Timer */
+    /* COUNTDOWN TIMER */
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
       margin: 2.5rem 0 1rem;
     }
 
     .time-box {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(5px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 12px;
-      padding: 0.75rem 1.1rem;
-      min-width: 75px;
+      border-radius: 16px;
+      padding: 0.85rem 1.2rem;
+      min-width: 80px;
       text-align: center;
       color: var(--text-main);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
     .time-box span {
       display: block;
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .time-box small {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
-    /* MAIN BODY CONTENT (Below building background) */
+    /* MAIN BODY CONTENT */
     .main-body {
-      background-color: #FAF8F5;
-      padding: 3rem 1.5rem 4rem;
+      background-color: #FAF6F0;
+      padding: 4rem 1.5rem 5rem;
     }
 
     .container {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
     /* Event Details Grid */
     .details-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
     }
 
     .detail-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(31,36,33,0.08);
     }
 
     .detail-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-main);
     }
 
     .detail-card p {
@@ -225,39 +238,141 @@
 
     .detail-card a {
       display: inline-block;
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
       color: var(--accent);
       font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .detail-card a:hover {
+      color: var(--accent-hover);
       text-decoration: underline;
+    }
+
+    /* EXCITING CALENDAR BUTTON & MODAL */
+    .cal-btn-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      background-color: #1F2421;
+      color: #FFFFFF;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 12px rgba(31,36,33,0.15);
+    }
+
+    .cal-btn-custom:hover {
+      background-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Modal Overlay */
+    .cal-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 20, 18, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .cal-modal-box {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 24px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: modalPop 0.25s ease-out;
+      border: 1px solid var(--border);
+    }
+
+    @keyframes modalPop {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .cal-modal-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cal-modal-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .cal-option-btn {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      margin-bottom: 0.75rem;
+      background: #FAF6F0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .cal-option-btn:hover {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    .cal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .cal-close-btn:hover {
+      color: var(--text-main);
     }
 
     /* FAQ Section */
     .faq-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      text-align: left;
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
     }
 
     .faq-section h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
     details {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
+      padding-bottom: 1.2rem;
     }
 
     summary {
@@ -265,39 +380,61 @@
       cursor: pointer;
       color: var(--text-main);
       font-size: 1.05rem;
+      list-style: none;
+      position: relative;
+      padding-right: 1.5rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    details[open] summary::after {
+      content: '−';
     }
 
     details p {
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
       color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* RSVP Section */
     .rsvp-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem 1.5rem;
+      border-radius: 24px;
+      padding: 3rem 2rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      box-shadow: 0 15px 40px rgba(31,36,33,0.06);
     }
 
     .rsvp-section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 0.5rem;
     }
 
     .rsvp-section > p {
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
     }
 
     .form-container {
       width: 100%;
       overflow: hidden;
+      border-radius: 12px;
     }
 
     .form-container iframe {
@@ -309,7 +446,7 @@
 
     footer {
       text-align: center;
-      margin-top: 3.5rem;
+      margin-top: 4rem;
       font-size: 0.85rem;
       color: var(--text-muted);
     }
@@ -342,7 +479,7 @@
     </div>
   </section>
 
-  <!-- REST OF THE PAGE CONTENT -->
+  <!-- MAIN BODY CONTENT -->
   <div class="main-body">
     <div class="container">
       
@@ -351,22 +488,9 @@
         <div class="detail-card">
           <h3 data-i18n="whenTitle">When</h3>
           <p data-i18n="whenText">Saturday, March 20, 2027<br>7:00 PM – Late</p>
-          <!-- CALENDAR DROPDOWN SECTION -->
-<div class="calendar-dropdown-container" style="margin-top: 1.5rem; text-align: center;">
-  <div class="dropdown" style="position: relative; display: inline-block;">
-    <button onclick="toggleCalendarMenu()" class="btn-rsvp" style="cursor: pointer; background-color: #1F2421;">
-      📅 <span data-i18n="calButton">Add to Calendar</span> ▾
-    </button>
-    <div id="calMenu" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); bottom: 110%; background: white; min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.15); border-radius: 12px; z-index: 100; overflow: hidden; border: 1px solid #E6E1D8; text-align: left;">
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Nina+20+%2B+Elin+50+%2B+Marianne+80!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0;">Google Calendar</a>
-      
-      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Nina+20+%2B+Elin+50+%2B+Marianne+80!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0;">Outlook</a>
-      
-      <!-- Option for Apple/iCal via a standard web data URI / ICS format -->
-      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Nina%2020%20+%20Elin%2050%20+%20Marianne%2080!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem;">Apple / iCal (.ics)</a>
-    </div>
-  </div>
-</div>
+          <button onclick="openCalModal()" class="cal-btn-custom">
+            📅 <span data-i18n="calButton">Add to Calendar</span>
+          </button>
         </div>
 
         <div class="detail-card">
@@ -415,9 +539,24 @@
     </div>
   </div>
 
-  <!-- TRANSLATION & COUNTDOWN SCRIPT -->
+  <!-- CALENDAR POPUP MODAL -->
+  <div id="calModal" class="cal-modal-overlay">
+    <div class="cal-modal-box">
+      <h3 data-i18n="modalTitle">Add to Calendar</h3>
+      <p data-i18n="modalSub">Choose your preferred calendar service:</p>
+      
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Nina+20+%2B+Elin+50+%2B+Marianne+80!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optGoogle">Google Calendar</a>
+      
+      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Nina+20+%2B+Elin+50+%2B+Marianne+80!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optOutlook">Outlook Calendar</a>
+      
+      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Nina%2020%20+%20Elin%2050%20+%20Marianne%2080!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" class="cal-option-btn" data-i18n="optApple">Apple / iCal (.ics)</a>
+      
+      <button onclick="closeCalModal()" class="cal-close-btn" data-i18n="closeBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT FOR TRANSLATIONS, COUNTDOWN, AND MODAL -->
   <script>
-    // Translations Dictionary
     const translations = {
       en: {
         eyebrow: "Join Us To Celebrate",
@@ -433,6 +572,7 @@
         mapLink: "View on Google Maps &rarr;",
         dressTitle: "Dress Code",
         dressText: "Smart Casual / Festive<br>Comfortable shoes recommended",
+        calButton: "Add to Calendar",
         faqHeading: "Frequently Asked Questions",
         faq1Q: "Are children welcome?",
         faq1A: "Please check your invitation details or reach out to us directly regarding family attendance.",
@@ -442,8 +582,13 @@
         faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
         rsvpHeading: "Kindly RSVP",
         rsvpSub: "Please let us know if you can make it by January 1st.",
-        calButton: "Add to Calendar",
-        footerText: "Questions? Reach out directly via WhatsApp or email."
+        footerText: "Questions? Reach out directly via WhatsApp or email.",
+        modalTitle: "Add to Calendar",
+        modalSub: "Choose your preferred calendar service:",
+        optGoogle: "Google Calendar",
+        optOutlook: "Outlook Calendar",
+        optApple: "Apple / iCal (.ics)",
+        closeBtn: "Cancel"
       },
       sv: {
         eyebrow: "Välkommen att fira med oss",
@@ -459,6 +604,7 @@
         mapLink: "Visa på Google Maps &rarr;",
         dressTitle: "Klädsel",
         dressText: "Klädsel: Vårdad klädsel / Festligt<br>Bekväma skor rekommenderas",
+        calButton: "Lägg till i kalender",
         faqHeading: "Vanliga Frågor",
         faq1Q: "Är barn välkomna?",
         faq1A: "Vänligen kontrollera din inbjudan eller hör av dig direkt till oss om familjen följer med.",
@@ -468,8 +614,13 @@
         faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
         rsvpHeading: "Vänligen OSA",
         rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
-        calButton: "Lägg till i kalender",
-        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post."
+        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post.",
+        modalTitle: "Lägg till i kalender",
+        modalSub: "Välj din kalendertjänst:",
+        optGoogle: "Google Kalender",
+        optOutlook: "Outlook Kalender",
+        optApple: "Apple / iCal (.ics)",
+        closeBtn: "Avbryt"
       }
     };
 
@@ -480,16 +631,26 @@
           el.innerHTML = translations[lang][key];
         }
       });
-
-      // Update active toggle button style
       document.getElementById("btn-en").classList.toggle("active", lang === 'en');
       document.getElementById("btn-sv").classList.toggle("active", lang === 'sv');
-
-      // Save preference
       localStorage.setItem("preferred_lang", lang);
     }
 
-    // Auto-detect browser language on first load
+    // Modal Controls
+    function openCalModal() {
+      document.getElementById("calModal").style.display = "flex";
+    }
+    function closeCalModal() {
+      document.getElementById("calModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("calModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Auto-detect browser language
     document.addEventListener("DOMContentLoaded", () => {
       const savedLang = localStorage.getItem("preferred_lang");
       if (savedLang && translations[savedLang]) {
@@ -499,14 +660,13 @@
         if (browserLang && browserLang.toLowerCase().startsWith("sv")) {
           setLanguage("sv");
         } else {
-          setLanguage("en"); // Defaults to UK English
+          setLanguage("en");
         }
       }
     });
 
-    // Countdown Timer Logic
+    // Countdown Timer
     const partyDate = new Date("2027-03-20T19:00:00").getTime();
-
     const timer = setInterval(function() {
       const now = new Date().getTime();
       const distance = partyDate - now;
@@ -525,22 +685,6 @@
       document.getElementById("hours").innerText = String(hours).padStart(2, '0');
       document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
     }, 1000);
-
-    // Toggle Calendar Dropdown Menu
-function toggleCalendarMenu() {
-  const menu = document.getElementById("calMenu");
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
-// Close dropdown if clicked outside
-window.onclick = function(event) {
-  if (!event.target.matches('.btn-rsvp')) {
-    const menu = document.getElementById("calMenu");
-    if (menu && menu.style.display === "block") {
-      menu.style.display = "none";
-    }
-  }
-}
   </script>
 
 </body>
