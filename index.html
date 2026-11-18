@@ -36,16 +36,16 @@
     /* LANGUAGE SWITCHER BAR */
     .lang-bar {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+      top: 1.25rem;
+      right: 1.25rem;
       z-index: 10;
       display: flex;
       gap: 0.3rem;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.55);
       padding: 0.35rem 0.6rem;
       border-radius: 50px;
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .lang-btn {
@@ -76,16 +76,17 @@
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center top;
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 5rem 1rem 6rem;
+      padding: 4.5rem 1.25rem 5rem;
       text-align: center;
       color: #FFFFFF;
     }
 
+    /* Very light gradient only at the very top so sky & building stay clear */
     .hero-banner::after {
       content: '';
       position: absolute;
@@ -93,60 +94,68 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 20, 18, 0.35);
+      background: linear-gradient(to bottom, rgba(15, 20, 18, 0.3) 0%, rgba(15, 20, 18, 0.05) 45%, rgba(15, 20, 18, 0.35) 100%);
       pointer-events: none;
       z-index: 1;
     }
 
-    /* HERO CONTENT WRAPPED IN A STYLISH OPAQUE CONTAINER FOR MOBILE READABILITY */
+    /* TRANSPARENT CONTAINER SO BUILDING & SIGN REMAIN VISIBLE */
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 720px;
       width: 100%;
-      background: rgba(15, 20, 18, 0.72);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 28px;
-      padding: 2.5rem 1.5rem;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
 
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #FFD29D;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      line-height: 1.15;
-      margin-bottom: 1rem;
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
       color: #FFFFFF;
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
     }
 
-    /* PROMINENT ROW FOR THE AGES */
+    /* OPAQUE PILL ONLY BEHIND THE SMALLER TEXT & AGES */
+    .subtitle-pill {
+      display: inline-block;
+      background: rgba(15, 20, 18, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 1.1rem 1.5rem;
+      margin: 0 auto 1.75rem;
+      max-width: 560px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
     .hero-ages {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-size: clamp(1.25rem, 3.2vw, 1.65rem);
       font-style: italic;
       color: #FFD29D;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.5rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
     .subtitle {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       color: #F4F0EA;
-      max-width: 540px;
-      margin: 0 auto 2rem;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.55;
+      margin: 0;
     }
 
     .btn-rsvp {
@@ -154,11 +163,11 @@
       background-color: var(--accent);
       color: #FFFFFF;
       text-decoration: none;
-      padding: 0.9rem 2.4rem;
+      padding: 0.85rem 2.3rem;
       border-radius: 50px;
       font-weight: 600;
       font-size: 0.95rem;
-      box-shadow: 0 6px 20px rgba(200, 90, 50, 0.4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       transition: all 0.2s ease;
       border: none;
     }
@@ -173,15 +182,15 @@
       display: flex;
       justify-content: center;
       gap: 0.8rem;
-      margin: 2rem 0 0.5rem;
+      margin: 1.75rem 0 0.5rem;
     }
 
     .time-box {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
       border-radius: 14px;
-      padding: 0.75rem 1rem;
-      min-width: 75px;
+      padding: 0.7rem 1rem;
+      min-width: 72px;
       text-align: center;
       color: var(--text-main);
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -571,11 +580,18 @@
     <div class="hero-content">
       <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
       <h1 data-i18n="title">150 Birthday Celebration</h1>
-      <div class="hero-ages" data-i18n="agesRow">Nina 20 + Elin 50 + Marianne 80</div>
-      <p class="subtitle" data-i18n="subtitle">
-        Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
-      </p>
-      <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
+      
+      <!-- OPAQUE PILL ONLY AROUND AGES & SUBTITLE -->
+      <div class="subtitle-pill">
+        <div class="hero-ages" data-i18n="agesRow">Nina 20 + Elin 50 + Marianne 80</div>
+        <p class="subtitle" data-i18n="subtitle">
+          Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
+        </p>
+      </div>
+
+      <div>
+        <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
+      </div>
 
       <!-- LIVE COUNTDOWN TIMER -->
       <div class="countdown" id="countdown">
@@ -650,7 +666,6 @@
         <h2 data-i18n="galleryHeading">Photo Gallery</h2>
         <p data-i18n="gallerySub">A glimpse of our journey together</p>
         <div class="gallery-grid">
-          <!-- To add images, name them photo1.jpg, photo2.jpg, photo3.jpg in your GitHub repo -->
           <div class="gallery-item"><img src="photo1.jpg" alt="Party Photo 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 1</text></svg>'"></div>
           <div class="gallery-item"><img src="photo2.jpg" alt="Party Photo 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 2</text></svg>'"></div>
           <div class="gallery-item"><img src="photo3.jpg" alt="Party Photo 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 3</text></svg>'"></div>
