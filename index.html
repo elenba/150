@@ -17,7 +17,6 @@
       --accent: #C85A32;
       --accent-hover: #A84623;
       --border: #E8E2D5;
-      --gold-glow: rgba(200, 90, 50, 0.15);
     }
 
     * {
@@ -77,12 +76,12 @@
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center top;
-      min-height: 85vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 5rem 1.5rem 6rem;
+      padding: 5rem 1rem 6rem;
       text-align: center;
       color: #FFFFFF;
     }
@@ -94,44 +93,60 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(15,20,18,0.4) 0%, rgba(15,20,18,0.2) 50%, rgba(31,36,33,0.92) 100%);
+      background: rgba(15, 20, 18, 0.35);
       pointer-events: none;
       z-index: 1;
     }
 
+    /* HERO CONTENT WRAPPED IN A STYLISH OPAQUE CONTAINER FOR MOBILE READABILITY */
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 760px;
+      max-width: 720px;
       width: 100%;
+      background: rgba(15, 20, 18, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
 
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #FFD29D;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 0.6rem;
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6.5vw, 4.2rem);
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       line-height: 1.15;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       color: #FFFFFF;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+    }
+
+    /* PROMINENT ROW FOR THE AGES */
+    .hero-ages {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-style: italic;
+      color: #FFD29D;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     .subtitle {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: #F4F0EA;
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+      max-width: 540px;
+      margin: 0 auto 2rem;
       font-weight: 400;
+      line-height: 1.6;
     }
 
     .btn-rsvp {
@@ -151,39 +166,37 @@
     .btn-rsvp:hover {
       background-color: var(--accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(200, 90, 50, 0.5);
     }
 
     /* COUNTDOWN TIMER */
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin: 2.5rem 0 1rem;
+      gap: 0.8rem;
+      margin: 2rem 0 0.5rem;
     }
 
     .time-box {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 16px;
-      padding: 0.85rem 1.2rem;
-      min-width: 80px;
+      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      min-width: 75px;
       text-align: center;
       color: var(--text-main);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
     .time-box span {
       display: block;
       font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .time-box small {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-muted);
@@ -243,11 +256,9 @@
       font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
-      transition: color 0.2s ease;
     }
 
     .detail-card a:hover {
-      color: var(--accent-hover);
       text-decoration: underline;
     }
 
@@ -294,13 +305,7 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      animation: modalPop 0.25s ease-out;
       border: 1px solid var(--border);
-    }
-
-    @keyframes modalPop {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
     }
 
     .cal-modal-box h3 {
@@ -347,11 +352,7 @@
       padding: 0.5rem;
     }
 
-    .cal-close-btn:hover {
-      color: var(--text-main);
-    }
-
-    /* TRAVEL & STAY SECTION (Hotels & Airlines) */
+    /* TRAVEL & STAY SECTION */
     .travel-section {
       margin-bottom: 3.5rem;
     }
@@ -376,9 +377,6 @@
       font-size: 1.8rem;
       margin-bottom: 1.2rem;
       color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .travel-list {
@@ -407,6 +405,57 @@
     .travel-list p {
       color: var(--text-muted);
       font-size: 0.9rem;
+    }
+
+    /* PICTURE GALLERY SECTION */
+    .gallery-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
+      text-align: center;
+    }
+
+    .gallery-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-section > p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #FAF6F0;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.03);
     }
 
     /* FAQ Section */
@@ -522,8 +571,9 @@
     <div class="hero-content">
       <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
       <h1 data-i18n="title">150 Birthday Celebration</h1>
+      <div class="hero-ages" data-i18n="agesRow">Nina 20 + Elin 50 + Marianne 80</div>
       <p class="subtitle" data-i18n="subtitle">
-        Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
+        Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
       </p>
       <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
 
@@ -565,13 +615,12 @@
       <!-- TRAVEL & STAY SECTION -->
       <section class="travel-section">
         <div class="travel-grid">
-          <!-- Hotels Card -->
           <div class="travel-card">
             <h2 data-i18n="hotelsHeading">🏨 Where to Stay</h2>
             <ul class="travel-list">
               <li>
                 <strong data-i18n="hotel1Name">Higuerón Hotel Málaga Resort</strong>
-                <p data-i18n="hotel1Desc">Upscale luxury resort nearby with panoramic views, spa, and exceptional dining[cite: 15].</p>
+                <p data-i18n="hotel1Desc">Upscale luxury resort nearby with panoramic views, spa, and exceptional dining.</p>
               </li>
               <li>
                 <strong data-i18n="hotel2Name">Central Fuengirola Hotels</strong>
@@ -580,13 +629,12 @@
             </ul>
           </div>
 
-          <!-- Airlines Card -->
           <div class="travel-card">
             <h2 data-i18n="airlinesHeading">✈️ Getting to Málaga (AGP)</h2>
             <ul class="travel-list">
               <li>
                 <strong data-i18n="airlineUKName">From the UK</strong>
-                <p data-i18n="airlineUKDesc">Frequent direct flights daily from London (Heathrow, Gatwick, Stansted), Manchester, and regional airports via British Airways, easyJet, Ryanair, and Jet2.</p>
+                <p data-i18n="airlineUKDesc">Frequent direct flights daily from London, Manchester, and regional airports via British Airways, easyJet, Ryanair, and Jet2.</p>
               </li>
               <li>
                 <strong data-i18n="airlineSVName">From Sweden</strong>
@@ -594,6 +642,18 @@
               </li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      <!-- PICTURE GALLERY SECTION -->
+      <section class="gallery-section">
+        <h2 data-i18n="galleryHeading">Photo Gallery</h2>
+        <p data-i18n="gallerySub">A glimpse of our journey together</p>
+        <div class="gallery-grid">
+          <!-- To add images, name them photo1.jpg, photo2.jpg, photo3.jpg in your GitHub repo -->
+          <div class="gallery-item"><img src="photo1.jpg" alt="Party Photo 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 1</text></svg>'"></div>
+          <div class="gallery-item"><img src="photo2.jpg" alt="Party Photo 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 2</text></svg>'"></div>
+          <div class="gallery-item"><img src="photo3.jpg" alt="Party Photo 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 3</text></svg>'"></div>
         </div>
       </section>
 
@@ -653,7 +713,8 @@
       en: {
         eyebrow: "Join Us To Celebrate",
         title: "150 Birthday Celebration",
-        subtitle: "Nina 20 + Elin 50 + Marianne 80! Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!",
+        agesRow: "Nina 20 + Elin 50 + Marianne 80",
+        subtitle: "Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!",
         rsvpBtn: "RSVP Now",
         daysLabel: "Days",
         hoursLabel: "Hours",
@@ -672,9 +733,11 @@
         hotel2Desc: "A wide selection of boutique hotels and seaside apartments located right in central Fuengirola within walking distance of the venue.",
         airlinesHeading: "✈️ Getting to Málaga (AGP)",
         airlineUKName: "From the UK",
-        airlineUKDesc: "Frequent direct flights daily from London (Heathrow, Gatwick, Stansted), Manchester, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
+        airlineUKDesc: "Frequent direct flights daily from London, Manchester, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
         airlineSVName: "From Sweden",
         airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.",
+        galleryHeading: "Photo Gallery",
+        gallerySub: "A glimpse of our journey together",
         faqHeading: "Frequently Asked Questions",
         faq1Q: "Are children welcome?",
         faq1A: "Please check your invitation details or reach out to us directly regarding family attendance.",
@@ -695,7 +758,8 @@
       sv: {
         eyebrow: "Välkommen att fira med oss",
         title: "150-års Födelsedagsfest",
-        subtitle: "Nina 20 + Elin 50 + Marianne 80! God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
+        agesRow: "Nina 20 + Elin 50 + Marianne 80",
+        subtitle: "God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
         rsvpBtn: "OSA Här",
         daysLabel: "Dagar",
         hoursLabel: "Timmar",
@@ -717,6 +781,8 @@
         airlineUKDesc: "Många dagliga direktflyg från London, Manchester och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
         airlineSVName: "Från Sverige",
         airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
+        galleryHeading: "Fotomotiv & Minnen",
+        gallerySub: "Ett litet smakprov längs vägen",
         faqHeading: "Vanliga Frågor",
         faq1Q: "Är barn välkomna?",
         faq1A: "Vänligen kontrollera din inbjudan eller hör av dig direkt till oss om familjen följer med.",
