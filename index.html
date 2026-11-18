@@ -351,6 +351,22 @@
         <div class="detail-card">
           <h3 data-i18n="whenTitle">When</h3>
           <p data-i18n="whenText">Saturday, March 20, 2027<br>7:00 PM – Late</p>
+          <!-- CALENDAR DROPDOWN SECTION -->
+<div class="calendar-dropdown-container" style="margin-top: 1.5rem; text-align: center;">
+  <div class="dropdown" style="position: relative; display: inline-block;">
+    <button onclick="toggleCalendarMenu()" class="btn-rsvp" style="cursor: pointer; background-color: #1F2421;">
+      📅 <span data-i18n="calButton">Add to Calendar</span> ▾
+    </button>
+    <div id="calMenu" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); bottom: 110%; background: white; min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.15); border-radius: 12px; z-index: 100; overflow: hidden; border: 1px solid #E6E1D8; text-align: left;">
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Nina+20+%2B+Elin+50+%2B+Marianne+80!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0;">Google Calendar</a>
+      
+      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Nina+20+%2B+Elin+50+%2B+Marianne+80!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0;">Outlook</a>
+      
+      <!-- Option for Apple/iCal via a standard web data URI / ICS format -->
+      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Nina%2020%20+%20Elin%2050%20+%20Marianne%2080!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" style="display: block; padding: 10px 15px; color: #1F2421; text-decoration: none; font-size: 0.9rem;">Apple / iCal (.ics)</a>
+    </div>
+  </div>
+</div>
         </div>
 
         <div class="detail-card">
@@ -426,6 +442,7 @@
         faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
         rsvpHeading: "Kindly RSVP",
         rsvpSub: "Please let us know if you can make it by January 1st.",
+        calButton: "Add to Calendar",
         footerText: "Questions? Reach out directly via WhatsApp or email."
       },
       sv: {
@@ -451,6 +468,7 @@
         faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
         rsvpHeading: "Vänligen OSA",
         rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
+        calButton: "Lägg till i kalender",
         footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post."
       }
     };
@@ -507,6 +525,22 @@
       document.getElementById("hours").innerText = String(hours).padStart(2, '0');
       document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
     }, 1000);
+
+    // Toggle Calendar Dropdown Menu
+function toggleCalendarMenu() {
+  const menu = document.getElementById("calMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Close dropdown if clicked outside
+window.onclick = function(event) {
+  if (!event.target.matches('.btn-rsvp')) {
+    const menu = document.getElementById("calMenu");
+    if (menu && menu.style.display === "block") {
+      menu.style.display = "none";
+    }
+  }
+}
   </script>
 
 </body>
