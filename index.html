@@ -7,572 +7,24 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <style>
-    :root {
-      --card-bg: #FFFFFF;
-      --text-main: #1F2421;
-      --text-muted: #5C6460;
-      --accent: #C85A32;
-      --accent-hover: #A84623;
-      --border: #E8E2D5;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      background-color: #FAF6F0;
-    }
-
-    /* LANGUAGE SWITCHER BAR */
-    .lang-bar {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      z-index: 10;
-      display: flex;
-      gap: 0.3rem;
-      background: rgba(0, 0, 0, 0.55);
-      padding: 0.35rem 0.6rem;
-      border-radius: 50px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: #FFFFFF;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lang-btn.active {
-      background: var(--accent);
-      box-shadow: 0 2px 8px rgba(200, 90, 50, 0.4);
-    }
-
-    .lang-btn:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* HERO SECTION WITH BACKGROUND IMAGE */
-    .hero-banner {
-      position: relative;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center top;
-      min-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 4.5rem 1.25rem 5rem;
-      text-align: center;
-      color: #FFFFFF;
-    }
-
-    /* Very light gradient only at the very top so sky & building stay clear */
-    .hero-banner::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(15, 20, 18, 0.3) 0%, rgba(15, 20, 18, 0.05) 45%, rgba(15, 20, 18, 0.35) 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* TRANSPARENT CONTAINER SO BUILDING & SIGN REMAIN VISIBLE */
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      width: 100%;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #FFD29D;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      line-height: 1.12;
-      margin-bottom: 1.25rem;
-      color: #FFFFFF;
-      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
-    }
-
-    /* OPAQUE PILL ONLY BEHIND THE SMALLER TEXT & AGES */
-    .subtitle-pill {
-      display: inline-block;
-      background: rgba(15, 20, 18, 0.72);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 20px;
-      padding: 1.1rem 1.5rem;
-      margin: 0 auto 1.75rem;
-      max-width: 560px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero-ages {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.25rem, 3.2vw, 1.65rem);
-      font-style: italic;
-      color: #FFD29D;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .subtitle {
-      font-size: 0.98rem;
-      color: #F4F0EA;
-      font-weight: 400;
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .btn-rsvp {
-      display: inline-block;
-      background-color: var(--accent);
-      color: #FFFFFF;
-      text-decoration: none;
-      padding: 0.85rem 2.3rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      transition: all 0.2s ease;
-      border: none;
-    }
-
-    .btn-rsvp:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    /* COUNTDOWN TIMER */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      margin: 1.75rem 0 0.5rem;
-    }
-
-    .time-box {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border-radius: 14px;
-      padding: 0.7rem 1rem;
-      min-width: 72px;
-      text-align: center;
-      color: var(--text-main);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    .time-box span {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .time-box small {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* MAIN BODY CONTENT */
-    .main-body {
-      background-color: #FAF6F0;
-      padding: 4rem 1.5rem 5rem;
-    }
-
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    /* Event Details Grid */
-    .details-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .detail-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .detail-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(31,36,33,0.08);
-    }
-
-    .detail-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-      color: var(--text-main);
-    }
-
-    .detail-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .detail-card a {
-      display: inline-block;
-      margin-top: 0.8rem;
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .detail-card a:hover {
-      text-decoration: underline;
-    }
-
-    /* CALENDAR BUTTON & MODAL */
-    .cal-btn-custom {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1rem;
-      background-color: #1F2421;
-      color: #FFFFFF;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
-      box-shadow: 0 4px 12px rgba(31,36,33,0.15);
-    }
-
-    .cal-btn-custom:hover {
-      background-color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    .cal-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 20, 18, 0.6);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .cal-modal-box {
-      background: #FFFFFF;
-      width: 100%;
-      max-width: 380px;
-      border-radius: 24px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      border: 1px solid var(--border);
-    }
-
-    .cal-modal-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .cal-modal-box p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .cal-option-btn {
-      display: block;
-      width: 100%;
-      padding: 0.85rem;
-      margin-bottom: 0.75rem;
-      background: #FAF6F0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text-main);
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
-    .cal-option-btn:hover {
-      background: var(--accent);
-      color: #FFFFFF;
-      border-color: var(--accent);
-    }
-
-    .cal-close-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      padding: 0.5rem;
-    }
-
-    /* TRAVEL & STAY SECTION */
-    .travel-section {
-      margin-bottom: 3.5rem;
-    }
-
-    .travel-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .travel-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
-      text-align: left;
-    }
-
-    .travel-card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 1.2rem;
-      color: var(--text-main);
-    }
-
-    .travel-list {
-      list-style: none;
-    }
-
-    .travel-list li {
-      margin-bottom: 1.2rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .travel-list li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .travel-list strong {
-      display: block;
-      color: var(--text-main);
-      font-size: 1.05rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .travel-list p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* PICTURE GALLERY SECTION */
-    .gallery-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
-      text-align: center;
-    }
-
-    .gallery-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .gallery-section > p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .gallery-item {
-      border-radius: 14px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      background: #FAF6F0;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item img:hover {
-      transform: scale(1.03);
-    }
-
-    /* FAQ Section */
-    .faq-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 10px 30px rgba(31,36,33,0.04);
-    }
-
-    .faq-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    details {
-      margin-bottom: 1.2rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.2rem;
-    }
-
-    summary {
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--text-main);
-      font-size: 1.05rem;
-      list-style: none;
-      position: relative;
-      padding-right: 1.5rem;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: '+';
-      position: absolute;
-      right: 0;
-      font-size: 1.2rem;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    details[open] summary::after {
-      content: '−';
-    }
-
-    details p {
-      margin-top: 0.75rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* RSVP Section */
-    .rsvp-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(31,36,33,0.06);
-    }
-
-    .rsvp-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .rsvp-section > p {
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      font-size: 1rem;
-    }
-
-    .form-container {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    .form-container iframe {
-      width: 100%;
-      max-width: 640px;
-      height: 777px;
-      border: none;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-  </style>
+  <!-- Dynamic Theme Stylesheet -->
+  <link id="themeStylesheet" rel="stylesheet" href="style-warm.css" />
 </head>
 <body>
 
-  <!-- LANGUAGE SWITCHER TOGGLE -->
-  <div class="lang-bar">
-    <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
-    <button class="lang-btn" onclick="setLanguage('sv')" id="btn-sv">SV</button>
+  <!-- TOP CONTROLS: STYLE SWITCHER + LANGUAGE SWITCHER -->
+  <div class="top-controls">
+    <div class="toggle-group" aria-label="Theme Switcher">
+      <button class="toggle-btn active" onclick="setTheme('warm')" id="theme-warm" data-i18n="styleWarm">Warm</button>
+      <button class="toggle-btn" onclick="setTheme('bold')" id="theme-bold" data-i18n="styleBold">Bold</button>
+    </div>
+
+    <div class="toggle-group" aria-label="Language Switcher">
+      <button class="toggle-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
+      <button class="toggle-btn" onclick="setLanguage('sv')" id="btn-sv">SV</button>
+    </div>
   </div>
 
   <!-- HERO BANNER -->
@@ -581,7 +33,6 @@
       <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
       <h1 data-i18n="title">150 Birthday Celebration</h1>
       
-      <!-- OPAQUE PILL ONLY AROUND AGES & SUBTITLE -->
       <div class="subtitle-pill">
         <div class="hero-ages" data-i18n="agesRow">Nina 20 + Elin 50 + Marianne 80</div>
         <p class="subtitle" data-i18n="subtitle">
@@ -722,10 +173,12 @@
     </div>
   </div>
 
-  <!-- SCRIPT FOR TRANSLATIONS, COUNTDOWN, AND MODAL -->
+  <!-- SCRIPT FOR THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
   <script>
     const translations = {
       en: {
+        styleWarm: "Warm",
+        styleBold: "Bold",
         eyebrow: "Join Us To Celebrate",
         title: "150 Birthday Celebration",
         agesRow: "Nina 20 + Elin 50 + Marianne 80",
@@ -771,6 +224,8 @@
         closeBtn: "Cancel"
       },
       sv: {
+        styleWarm: "Varm",
+        styleBold: "Djärv",
         eyebrow: "Välkommen att fira med oss",
         title: "150-års Födelsedagsfest",
         agesRow: "Nina 20 + Elin 50 + Marianne 80",
@@ -817,6 +272,16 @@
       }
     };
 
+    // Theme Switcher
+    function setTheme(theme) {
+      const sheet = document.getElementById("themeStylesheet");
+      sheet.href = theme === "bold" ? "style-bold.css" : "style-warm.css";
+      document.getElementById("theme-warm").classList.toggle("active", theme === "warm");
+      document.getElementById("theme-bold").classList.toggle("active", theme === "bold");
+      localStorage.setItem("preferred_theme", theme);
+    }
+
+    // Language Switcher
     function setLanguage(lang) {
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
@@ -843,8 +308,13 @@
       }
     }
 
-    // Auto-detect browser language
+    // Restore Saved Preferences & Auto-detect Browser Language
     document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("preferred_theme");
+      if (savedTheme === "bold" || savedTheme === "warm") {
+        setTheme(savedTheme);
+      }
+
       const savedLang = localStorage.getItem("preferred_lang");
       if (savedLang && translations[savedLang]) {
         setLanguage(savedLang);
