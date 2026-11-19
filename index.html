@@ -10,15 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Dynamic Theme Stylesheet -->
-  <link id="themeStylesheet" rel="stylesheet" href="style-warm.css" />
+  <link id="themeStylesheet" rel="stylesheet" href="style-nina.css" />
 </head>
 <body>
 
-  <!-- TOP CONTROLS: STYLE SWITCHER + LANGUAGE SWITCHER -->
+  <!-- TOP CONTROLS: CELEBRANT STYLE SWITCHER + LANGUAGE SWITCHER -->
   <div class="top-controls">
-    <div class="toggle-group" aria-label="Theme Switcher">
-      <button class="toggle-btn active" onclick="setTheme('warm')" id="theme-warm" data-i18n="styleWarm">Warm</button>
-      <button class="toggle-btn" onclick="setTheme('bold')" id="theme-bold" data-i18n="styleBold">Bold</button>
+    <div class="toggle-group" aria-label="Celebrant Style Switcher">
+      <button class="toggle-btn active" onclick="setTheme('nina')" id="theme-nina">Nina</button>
+      <button class="toggle-btn" onclick="setTheme('marianne')" id="theme-marianne">Marianne</button>
+      <button class="toggle-btn" onclick="setTheme('elin')" id="theme-elin">Elin</button>
     </div>
 
     <div class="toggle-group" aria-label="Language Switcher">
@@ -177,8 +178,6 @@
   <script>
     const translations = {
       en: {
-        styleWarm: "Warm",
-        styleBold: "Bold",
         eyebrow: "Join Us To Celebrate",
         title: "150 Birthday Celebration",
         agesRow: "Nina 20 + Elin 50 + Marianne 80",
@@ -224,8 +223,6 @@
         closeBtn: "Cancel"
       },
       sv: {
-        styleWarm: "Varm",
-        styleBold: "Djärv",
         eyebrow: "Välkommen att fira med oss",
         title: "150-års Födelsedagsfest",
         agesRow: "Nina 20 + Elin 50 + Marianne 80",
@@ -272,12 +269,25 @@
       }
     };
 
-    // Theme Switcher
+    const themeFiles = {
+      nina: "style-nina.css",
+      marianne: "style-marianne.css",
+      elin: "style-elin.css"
+    };
+
+    // Celebrant Theme Switcher
     function setTheme(theme) {
+      if (!themeFiles[theme]) return;
       const sheet = document.getElementById("themeStylesheet");
-      sheet.href = theme === "bold" ? "style-bold.css" : "style-warm.css";
-      document.getElementById("theme-warm").classList.toggle("active", theme === "warm");
-      document.getElementById("theme-bold").classList.toggle("active", theme === "bold");
+      sheet.href = themeFiles[theme];
+
+      ["nina", "marianne", "elin"].forEach(name => {
+        const btn = document.getElementById("theme-" + name);
+        if (btn) {
+          btn.classList.toggle("active", name === theme);
+        }
+      });
+
       localStorage.setItem("preferred_theme", theme);
     }
 
@@ -311,7 +321,7 @@
     // Restore Saved Preferences & Auto-detect Browser Language
     document.addEventListener("DOMContentLoaded", () => {
       const savedTheme = localStorage.getItem("preferred_theme");
-      if (savedTheme === "bold" || savedTheme === "warm") {
+      if (savedTheme && themeFiles[savedTheme]) {
         setTheme(savedTheme);
       }
 
