@@ -356,7 +356,6 @@ h1 {
   position: relative;
   background-color: var(--grille-bg);
   background-image:
-    /* Subtle champagne/brass trim bar along lower cabinet edge */
     linear-gradient(
       to top,
       transparent 14px,
@@ -364,7 +363,6 @@ h1 {
       rgba(201, 154, 70, 0.55) 15.5px,
       transparent 15.5px
     ),
-    /* Tight woven speaker grille cross-mesh */
     repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.032) 0px,
@@ -382,7 +380,6 @@ h1 {
     linear-gradient(180deg, #222227 0%, #17171B 100%);
   background-size: 100% 100%, 4px 4px, 4px 4px, 100% 100%;
   border-radius: 14px;
-  /* Pebbled leather/tolex cabinet trim */
   border: 8px solid var(--tolex-outer);
   outline: 1px solid rgba(255, 255, 255, 0.09);
   outline-offset: -6px;
@@ -587,7 +584,7 @@ h1 {
   margin-bottom: 1.25rem;
   padding-bottom: 0.65rem;
   border-bottom: 1px solid rgba(201, 154, 70, 0.32);
-  color: #FFFFFF;
+  color: var(--link-gold);
 }
 
 .travel-list {
@@ -619,7 +616,7 @@ h1 {
   font-size: 0.9rem;
 }
 
-/* GALLERY */
+/* GALLERY — SUBTLE SEPIA & WARM BRASS GLAZE */
 .gallery-section {
   padding: 2.75rem 2rem 3rem;
   margin-bottom: 3.5rem;
@@ -633,6 +630,7 @@ h1 {
   letter-spacing: 0.01em;
   font-size: 2.15rem;
   margin-bottom: 0.4rem;
+  color: var(--link-gold);
 }
 
 .gallery-section > p {
@@ -648,6 +646,7 @@ h1 {
 }
 
 .gallery-item {
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
   aspect-ratio: 4 / 3;
@@ -661,15 +660,31 @@ h1 {
   justify-content: center;
 }
 
+/* Warm sepia/gold tint overlay over gallery photos */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(223, 180, 90, 0.14) 0%,
+    rgba(68, 46, 16, 0.22) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  filter: sepia(0.28) contrast(1.03) brightness(0.96);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.gallery-item img:hover {
+.gallery-item:hover img {
   transform: scale(1.03);
+  filter: sepia(0.18) contrast(1.05) brightness(1);
 }
 
 /* FAQ */
@@ -686,6 +701,7 @@ h1 {
   font-size: 2.15rem;
   margin-bottom: 2rem;
   text-align: center;
+  color: var(--link-gold);
 }
 
 details {
@@ -749,6 +765,7 @@ details p {
   letter-spacing: 0.01em;
   font-size: 2.25rem;
   margin-bottom: 0.4rem;
+  color: var(--link-gold);
 }
 
 .rsvp-section > p {
