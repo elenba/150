@@ -1,15 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Great+Vibes&display=swap');
+
 :root {
   --amp-black: #121214;
   --tolex-outer: #1A1A1E;
   --grille-bg: #1E1E23;
   --text-main: #F4F4F6;
   --text-muted: #B2B2BC;
-  --accent: #FF2E4C;
-  --accent-hover: #E11D48;
-  --brass-gold: #D4A24C;
-  --link-gold: #FBBF24;
-  --brass-border: rgba(212, 162, 76, 0.45);
+  --accent: #C6923A;
+  --accent-hover: #B07E2C;
+  --brass-gold: #C99A46;
+  --link-gold: #DFB45A;
+  --brass-border: rgba(201, 154, 70, 0.45);
   --border: #31313A;
+  --brass-knob-gradient: linear-gradient(
+    145deg,
+    #ECC97A 0%,
+    #CE9B42 48%,
+    #9A6B20 100%
+  );
 }
 
 * {
@@ -26,7 +34,7 @@ body {
   /* Matte charcoal backdrop with fine pebbled tolex grain */
   background-color: #161619;
   background-image:
-    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.045), transparent 60%),
+    radial-gradient(circle at 50% 18%, rgba(223, 180, 90, 0.06), transparent 60%),
     radial-gradient(rgba(255, 255, 255, 0.032) 0.75px, transparent 0),
     radial-gradient(rgba(0, 0, 0, 0.38) 0.85px, transparent 0),
     linear-gradient(180deg, #1B1B1F 0%, #101013 100%);
@@ -72,9 +80,10 @@ body {
 }
 
 .toggle-btn.active {
-  background: linear-gradient(135deg, #FF2E4C, #D4A24C);
-  color: #111114;
+  background: var(--brass-knob-gradient);
+  color: #14120E;
   font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 .toggle-btn:hover:not(.active) {
@@ -129,8 +138,8 @@ body {
 
 .eyebrow {
   display: inline-block;
-  background: linear-gradient(135deg, #FF2E4C, #D4A24C);
-  color: #111114;
+  background: var(--brass-knob-gradient);
+  color: #14120E;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.72rem;
@@ -138,16 +147,19 @@ body {
   padding: 0.34rem 1rem;
   border-radius: 999px;
   margin-bottom: 0.85rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
   font-style: italic;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  font-size: clamp(2.55rem, 6.2vw, 4.1rem);
-  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: clamp(3.1rem, 7.8vw, 5.1rem);
+  line-height: 1.06;
   margin-bottom: 1.35rem;
   color: #FFFFFF;
   text-shadow: 0 4px 22px rgba(0, 0, 0, 0.95);
@@ -159,7 +171,7 @@ h1 {
   background: rgba(17, 17, 20, 0.52);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(212, 162, 76, 0.55);
+  border: 1.5px solid rgba(201, 154, 70, 0.55);
   border-radius: 16px;
   padding: 1.25rem 1.65rem;
   margin: 0 auto 1.85rem;
@@ -195,14 +207,14 @@ h1 {
 }
 
 .name-chip {
-  background: rgba(24, 24, 28, 0.72);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  background: rgba(24, 24, 28, 0.74);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   color: #F4F4F5;
   font-family: inherit;
   font-size: clamp(0.98rem, 2.5vw, 1.18rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-  padding: 0.36rem 0.9rem;
+  padding: 0.36rem 0.92rem;
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.18s ease;
@@ -215,11 +227,13 @@ h1 {
 }
 
 .name-chip.active {
-  background: linear-gradient(135deg, #FF2E4C, #D4A24C);
-  border-color: #FFFFFF;
-  color: #111114;
+  background: var(--brass-knob-gradient);
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #14120E;
   font-weight: 800;
-  box-shadow: 0 6px 18px rgba(255, 46, 76, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 .math-symbol {
@@ -239,10 +253,10 @@ h1 {
 }
 
 .total-number {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-size: clamp(2.3rem, 5.2vw, 3.1rem);
+  font-weight: 700;
   line-height: 1;
   color: var(--link-gold);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
@@ -259,22 +273,26 @@ h1 {
 
 .btn-rsvp {
   display: inline-block;
-  background: linear-gradient(135deg, #FF2E4C, #D4A24C);
-  color: #111114;
+  background: var(--brass-knob-gradient);
+  color: #14120E;
   text-decoration: none;
   padding: 0.92rem 2.6rem;
   border-radius: 999px;
   font-weight: 800;
   letter-spacing: 0.06em;
   font-size: 0.95rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 10px 26px rgba(0, 0, 0, 0.55);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn-rsvp:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(255, 46, 76, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 14px 30px rgba(201, 154, 70, 0.3);
 }
 
 /* COUNTDOWN — BRASS KNOB STYLING */
@@ -287,9 +305,9 @@ h1 {
 
 .time-box {
   background:
-    radial-gradient(circle at 50% 0%, rgba(232, 193, 112, 0.2), transparent 65%),
+    radial-gradient(circle at 50% 0%, rgba(236, 201, 122, 0.22), transparent 65%),
     linear-gradient(180deg, #242429 0%, #16161A 100%);
-  border: 1.5px solid rgba(212, 162, 76, 0.55);
+  border: 1.5px solid rgba(201, 154, 70, 0.55);
   border-radius: 12px;
   padding: 0.75rem 1.15rem;
   min-width: 78px;
@@ -302,10 +320,10 @@ h1 {
 
 .time-box span {
   display: block;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
-  font-size: 1.65rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
   color: var(--link-gold);
 }
 
@@ -342,8 +360,8 @@ h1 {
     linear-gradient(
       to top,
       transparent 14px,
-      rgba(212, 162, 76, 0.55) 14px,
-      rgba(212, 162, 76, 0.55) 15.5px,
+      rgba(201, 154, 70, 0.55) 14px,
+      rgba(201, 154, 70, 0.55) 15.5px,
       transparent 15.5px
     ),
     /* Tight woven speaker grille cross-mesh */
@@ -386,7 +404,7 @@ h1 {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #FDE68A, #B45309);
+  background: radial-gradient(circle at 30% 30%, #ECC97A, #9A6B20);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   opacity: 0.85;
   pointer-events: none;
@@ -412,11 +430,11 @@ h1 {
 }
 
 .detail-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  font-size: 1.55rem;
   margin-bottom: 0.6rem;
   color: var(--link-gold);
 }
@@ -426,7 +444,7 @@ h1 {
   font-size: 0.95rem;
 }
 
-/* High-contrast warm gold links across all dark sections */
+/* High-contrast brass-gold links across all dark sections */
 .detail-card a,
 .travel-card a,
 .stay-links a {
@@ -442,7 +460,7 @@ h1 {
 .detail-card a:hover,
 .travel-card a:hover,
 .stay-links a:hover {
-  color: #FDE68A !important;
+  color: #ECC97A !important;
   text-decoration: underline;
 }
 
@@ -452,16 +470,18 @@ h1 {
   align-items: center;
   gap: 0.4rem;
   margin-top: 1rem;
-  background: linear-gradient(135deg, #FF2E4C, #D4A24C);
-  color: #111114;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: var(--brass-knob-gradient);
+  color: #14120E;
+  border: 1px solid rgba(255, 255, 255, 0.45);
   padding: 0.65rem 1.3rem;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 4px 14px rgba(0, 0, 0, 0.45);
   transition: transform 0.15s ease;
 }
 
@@ -495,10 +515,10 @@ h1 {
 }
 
 .cal-modal-box h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   margin-bottom: 0.5rem;
   color: var(--link-gold);
 }
@@ -525,8 +545,9 @@ h1 {
 }
 
 .cal-option-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--brass-knob-gradient);
+  color: #14120E;
+  border-color: var(--link-gold);
 }
 
 .cal-close-btn {
@@ -558,14 +579,14 @@ h1 {
 }
 
 .travel-card h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 1.72rem;
+  letter-spacing: 0.01em;
+  font-size: 1.9rem;
   margin-bottom: 1.25rem;
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(212, 162, 76, 0.32);
+  border-bottom: 1px solid rgba(201, 154, 70, 0.32);
   color: #FFFFFF;
 }
 
@@ -606,11 +627,11 @@ h1 {
 }
 
 .gallery-section h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 2rem;
+  letter-spacing: 0.01em;
+  font-size: 2.15rem;
   margin-bottom: 0.4rem;
 }
 
@@ -632,7 +653,7 @@ h1 {
   aspect-ratio: 4 / 3;
   background: #141418;
   border: 4px solid var(--tolex-outer);
-  outline: 1px solid rgba(212, 162, 76, 0.35);
+  outline: 1px solid rgba(201, 154, 70, 0.35);
   outline-offset: -3px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
   display: flex;
@@ -658,11 +679,11 @@ h1 {
 }
 
 .faq-section h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 2rem;
+  letter-spacing: 0.01em;
+  font-size: 2.15rem;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -722,11 +743,11 @@ details p {
 }
 
 .rsvp-section h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 2.1rem;
+  letter-spacing: 0.01em;
+  font-size: 2.25rem;
   margin-bottom: 0.4rem;
 }
 
@@ -742,7 +763,7 @@ details p {
   overflow: hidden;
   border-radius: 10px;
   border: 5px solid var(--tolex-outer);
-  outline: 1px solid rgba(212, 162, 76, 0.35);
+  outline: 1px solid rgba(201, 154, 70, 0.35);
   outline-offset: -3px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
 }
