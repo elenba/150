@@ -3,33 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You're Invited! | 150 Birthday Celebration</title>
+  <title>Save the date | Birthday Party in Spain 🎈</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+
   <!-- Link Preview (Open Graph & Social Sharing) -->
-  <meta property="og:title" content="🎈 Save the date | Birthday Party in Spain 🎈" />
-  <meta property="og:description" content="Nina 20 + Elin 50 + Marianne 80 — March 20, 2027 in Fuengirola, Málaga." />
+  <meta property="og:title" content="Save the date | Birthday Party in Spain 🎈" />
+  <meta property="og:description" content="Marianne 80 + Elin 50 + Nina 20 = 150! March 20, 2027 in Fuengirola, Málaga." />
   <meta property="og:image" content="https://150.apped.uk/bg.jpg" />
   <meta property="og:url" content="https://150.apped.uk" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Dynamic Theme Stylesheet -->
-  <link id="themeStylesheet" rel="stylesheet" href="style-nina.css" />
+  <link id="themeStylesheet" rel="stylesheet" href="style-marianne.css" />
 </head>
 <body>
 
-  <!-- TOP CONTROLS: CELEBRANT STYLE SWITCHER + LANGUAGE SWITCHER -->
+  <!-- TOP CONTROLS: LANGUAGE SWITCHER ONLY -->
   <div class="top-controls">
-    <div class="toggle-group" aria-label="Celebrant Style Switcher">
-      <button class="toggle-btn active" onclick="setTheme('nina')" id="theme-nina">Nina</button>
-      <button class="toggle-btn" onclick="setTheme('marianne')" id="theme-marianne">Marianne</button>
-      <button class="toggle-btn" onclick="setTheme('elin')" id="theme-elin">Elin</button>
-    </div>
-
     <div class="toggle-group" aria-label="Language Switcher">
       <button class="toggle-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
       <button class="toggle-btn" onclick="setLanguage('sv')" id="btn-sv">SV</button>
@@ -40,10 +36,22 @@
   <section class="hero-banner">
     <div class="hero-content">
       <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
-      <h1 data-i18n="title">150 Birthday Celebration</h1>
+      <h1 data-i18n="title">Birthday Celebration</h1>
       
       <div class="subtitle-pill">
-        <div class="hero-ages" data-i18n="agesRow">Nina 20 + Elin 50 + Marianne 80</div>
+        <div class="theme-hint" data-i18n="themeHint">Tap a name to switch style</div>
+        <div class="equation-row" role="group" aria-label="Choose celebrant theme">
+          <button type="button" class="name-chip active" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
+          <span class="math-symbol">+</span>
+          <button type="button" class="name-chip" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
+          <span class="math-symbol">+</span>
+          <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
+          <span class="equation-total">
+            <span class="math-symbol">=</span>
+            <span class="total-number">150</span>
+          </span>
+        </div>
+
         <p class="subtitle" data-i18n="subtitle">
           Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
         </p>
@@ -172,11 +180,11 @@
       <h3 data-i18n="modalTitle">Add to Calendar</h3>
       <p data-i18n="modalSub">Choose your preferred calendar service:</p>
       
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Nina+20+%2B+Elin+50+%2B+Marianne+80!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optGoogle">Google Calendar</a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Marianne+80+%2B+Elin+50+%2B+Nina+20+%3D+150!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optGoogle">Google Calendar</a>
       
-      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Nina+20+%2B+Elin+50+%2B+Marianne+80!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optOutlook">Outlook Calendar</a>
+      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Marianne+80+%2B+Elin+50+%2B+Nina+20+%3D+150!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optOutlook">Outlook Calendar</a>
       
-      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Nina%2020%20+%20Elin%2050%20+%20Marianne%2080!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" class="cal-option-btn" data-i18n="optApple">Apple / iCal (.ics)</a>
+      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Marianne%2080%20+%20Elin%2050%20+%20Nina%2020%20%3D%20150!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" class="cal-option-btn" data-i18n="optApple">Apple / iCal (.ics)</a>
       
       <button onclick="closeCalModal()" class="cal-close-btn" data-i18n="closeBtn">Cancel</button>
     </div>
@@ -187,8 +195,8 @@
     const translations = {
       en: {
         eyebrow: "Join Us To Celebrate",
-        title: "150 Birthday Celebration",
-        agesRow: "Nina 20 + Elin 50 + Marianne 80",
+        title: "Birthday Celebration",
+        themeHint: "Tap a name to switch style",
         subtitle: "Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!",
         rsvpBtn: "RSVP Now",
         daysLabel: "Days",
@@ -232,8 +240,8 @@
       },
       sv: {
         eyebrow: "Välkommen att fira med oss",
-        title: "150-års Födelsedagsfest",
-        agesRow: "Nina 20 + Elin 50 + Marianne 80",
+        title: "Födelsedagsfest",
+        themeHint: "Klicka på ett namn för att byta stil",
         subtitle: "God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
         rsvpBtn: "OSA Här",
         daysLabel: "Dagar",
@@ -278,9 +286,9 @@
     };
 
     const themeFiles = {
-      nina: "style-nina.css",
       marianne: "style-marianne.css",
-      elin: "style-elin.css"
+      elin: "style-elin.css",
+      nina: "style-nina.css"
     };
 
     // Celebrant Theme Switcher
@@ -289,7 +297,7 @@
       const sheet = document.getElementById("themeStylesheet");
       sheet.href = themeFiles[theme];
 
-      ["nina", "marianne", "elin"].forEach(name => {
+      ["marianne", "elin", "nina"].forEach(name => {
         const btn = document.getElementById("theme-" + name);
         if (btn) {
           btn.classList.toggle("active", name === theme);
