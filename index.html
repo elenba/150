@@ -401,8 +401,7 @@
       <button type="button" onclick="closeCalModal()" class="cal-close-btn" data-i18n="closeBtn">Cancel</button>
     </div>
   </div>
-
-  <!-- SCRIPT FOR PASSWORD GATE, THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
+<!-- SCRIPT FOR PASSWORD GATE, THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
   <script>
     const INVITE_PASSWORD = "partytime";
     const UNLOCK_KEY = "party_150_unlocked";
@@ -483,4 +482,198 @@
         calButton: "Lägg till i kalender",
         hotelsHeading: "🏨 Boende",
         hotel2Name: "Hotell & Boenden i Fuengirola",
-        hotel2Desc: "Ett brett utbud av charmiga hotell, strand
+        hotel2Desc: "Ett brett utbud av charmiga hotell, strandnära lägenheter och semesterboenden i Fuengirola på smidigt avstånd från lokalen.",
+        googleHotelsLink: "Sök hotell på Google &rarr;",
+        airbnbLink: "Se Airbnb i Fuengirola &rarr;",
+        airlinesHeading: "✈️ Resa till Málaga (AGP)",
+        airlineUKName: "Från Storbritannien",
+        airlineUKDesc: "Många dagliga direktflyg från London, Birmingham och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
+        jet2Link: "Från Birmingham med Jet2 &rarr;",
+        ryanairLink: "Från London med Ryanair &rarr;",
+        airlineSVName: "Från Sverige",
+        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
+        galleryHeading: "Fotomotiv & Minnen",
+        gallerySub: "Vi skulle älska om du vill komma och fira med oss",
+        faqHeading: "Vanliga Frågor",
+        faq1Q: "Är barn välkomna?",
+        faq1A: "Tyvärr inte den här gången.",
+        faq2Q: "Finns det parkering?",
+        faq2A: "Ja, det finns gott om gratis parkering inne vid Plaza de Toros.",
+        faq3Q: "Specialkost?",
+        faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
+        rsvpHeading: "Vänligen OSA",
+        rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
+        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post.",
+        modalTitle: "Lägg till i kalender",
+        modalSub: "Välj din kalendertjänst:",
+        optGoogle: "Google Kalender",
+        optOutlook: "Outlook Kalender",
+        optApple: "Apple / iCal (.ics)",
+        closeBtn: "Avbryt"
+      }
+    };
+
+    const themeFiles = {
+      marianne: "style-marianne.css",
+      elin: "style-elin.css",
+      nina: "style-nina.css"
+    };
+
+    let currentLang = "en";
+
+    function unlockSite() {
+      const gate = document.getElementById("passwordGate");
+      if (gate) gate.classList.add("unlocked");
+      document.body.classList.remove("locked");
+      try {
+        sessionStorage.setItem(UNLOCK_KEY, "true");
+      } catch (e) {}
+    }
+
+    function checkPassword(event) {
+      event.preventDefault();
+      const input = document.getElementById("passwordInput");
+      const errorEl = document.getElementById("lockError");
+      if (!input) return;
+
+      const entered = input.value.trim().toLowerCase();
+      if (entered === INVITE_PASSWORD) {
+        if (errorEl) errorEl.textContent = "";
+        unlockSite();
+      } else {
+        if (errorEl) errorEl.textContent = (translations[currentLang] && translations[currentLang].lockWrong) || "Incorrect password.";
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    function setTheme(theme) {
+      if (!themeFiles[theme]) return;
+      const sheet = document.getElementById("themeStylesheet");
+      if (sheet) {
+        sheet.href = themeFiles[theme];
+      }
+
+      ["marianne", "elin", "nina"].forEach(name => {
+        const btn = document.getElementById("theme-" + name);
+        if (btn) {
+          btn.classList.toggle("active", name === theme);
+        }
+      });
+
+      try {
+        localStorage.setItem("preferred_theme", theme);
+      } catch (e) {}
+    }
+
+    function setLanguage(lang) {
+      const targetLang = lang === "sv" ? "sv" : "en";
+      currentLang = targetLang;
+      const dict = translations[targetLang];
+
+      document.documentElement.lang = targetLang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        try {
+          const key = el.getAttribute("data-i18n");
+          if (key && dict && Object.prototype.hasOwnProperty.call(dict, key)) {
+            el.innerHTML = dict[key];
+          }
+        } catch (e) {}
+      });
+
+      const passInput = document.getElementById("passwordInput");
+      if (passInput && dict && dict.lockPlaceholder) {
+        passInput.placeholder = dict.lockPlaceholder;
+      }
+
+      const isEn = targetLang === "en";
+      const isSv = targetLang === "sv";
+
+      ["btn-en", "lock-btn-en"].forEach(id => {
+        const b = document.getElementById(id);
+        if (b) b.classList.toggle("active", isEn);
+      });
+
+      ["btn-sv", "lock-btn-sv"].forEach(id => {
+        const b = document.getElementById(id);
+        if (b) b.classList.toggle("active", isSv);
+      });
+
+      try {
+        localStorage.setItem("preferred_lang", targetLang);
+      } catch (e) {}
+    }
+
+    function openCalModal() {
+      const modal = document.getElementById("calModal");
+      if (modal) modal.style.display = "flex";
+    }
+
+    function closeCalModal() {
+      const modal = document.getElementById("calModal");
+      if (modal) modal.style.display = "none";
+    }
+
+    window.addEventListener("click", function(event) {
+      const modal = document.getElementById("calModal");
+      if (modal && event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        if (sessionStorage.getItem(UNLOCK_KEY) === "true") {
+          unlockSite();
+        }
+      } catch (e) {}
+
+      let savedTheme = null;
+      let savedLang = null;
+
+      try {
+        savedTheme = localStorage.getItem("preferred_theme");
+        savedLang = localStorage.getItem("preferred_lang");
+      } catch (e) {}
+
+      if (savedTheme && themeFiles[savedTheme]) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("marianne");
+      }
+
+      if (savedLang === "sv" || savedLang === "en") {
+        setLanguage(savedLang);
+      } else {
+        const browserLang = (navigator.language || navigator.userLanguage || "").toLowerCase();
+        setLanguage(browserLang.startsWith("sv") ? "sv" : "en");
+      }
+    });
+
+    const partyDate = new Date("2027-03-20T19:00:00").getTime();
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = partyDate - now;
+      const countdownEl = document.getElementById("countdown");
+      if (!countdownEl) return;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = "<p><strong>The party has started! / Festen har börjat!</strong></p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minsEl = document.getElementById("minutes");
+
+      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+      if (minsEl) minsEl.innerText = String(minutes).padStart(2, '0');
+    }, 1000);
+  </script>
