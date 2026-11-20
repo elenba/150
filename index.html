@@ -68,167 +68,9 @@
     .rsvp-section {
       margin-bottom: 3.5rem;
     }
-
-    /* Simple Password Gate Overlay */
-    body.locked {
-      overflow: hidden;
-    }
-
-    .lock-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-      background:
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.86)),
-        url('bg.jpg') center/cover no-repeat;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .lock-overlay.unlocked {
-      display: none;
-    }
-
-    .lock-card {
-      width: 100%;
-      max-width: 400px;
-      background: rgba(255, 255, 255, 0.96);
-      color: #0F172A;
-      border-radius: 24px;
-      padding: 2.25rem 1.75rem;
-      text-align: center;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-      border: 2px solid rgba(250, 204, 21, 0.75);
-    }
-
-    .lock-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      background: #FEF3C7;
-      color: #92400E;
-      margin-bottom: 0.75rem;
-    }
-
-    .lock-card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      margin-bottom: 0.4rem;
-      color: #0F172A;
-    }
-
-    .lock-card p {
-      font-size: 0.92rem;
-      color: #475569;
-      margin-bottom: 1.35rem;
-    }
-
-    .lock-input {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem;
-      border: 2px solid #CBD5E1;
-      border-radius: 14px;
-      margin-bottom: 0.85rem;
-      text-align: center;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .lock-input:focus {
-      border-color: #005A9C;
-    }
-
-    .lock-submit {
-      width: 100%;
-      padding: 0.9rem 1.5rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      background: linear-gradient(135deg, #FF5A5F, #FF9A62);
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 90, 95, 0.35);
-      transition: transform 0.15s ease;
-    }
-
-    .lock-submit:hover {
-      transform: translateY(-2px);
-    }
-
-    .lock-error {
-      min-height: 1.25rem;
-      margin-top: 0.7rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #DC2626;
-    }
-
-    .lock-lang-row {
-      display: inline-flex;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-    }
-
-    .lock-lang-btn {
-      background: transparent;
-      border: 1px solid #CBD5E1;
-      color: #475569;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-
-    .lock-lang-btn.active {
-      background: #0F172A;
-      color: #FFFFFF;
-      border-color: #0F172A;
-    }
   </style>
 </head>
-<body class="locked">
-
-  <!-- PASSWORD GATE OVERLAY -->
-  <div id="passwordGate" class="lock-overlay" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
-    <div class="lock-card">
-      <div class="lock-badge">🎈 150</div>
-      <h2 id="lockTitle" data-i18n="lockHeading">Private Save the Date</h2>
-      <p data-i18n="lockSub">Enter the invitation password to view the party details.</p>
-
-      <form id="passwordForm" onsubmit="checkPassword(event)">
-        <input
-          type="password"
-          id="passwordInput"
-          class="lock-input"
-          autocomplete="current-password"
-          placeholder="Password"
-          required
-        />
-        <button type="submit" class="lock-submit" data-i18n="lockBtn">Unlock Invite</button>
-      </form>
-
-      <div id="lockError" class="lock-error" aria-live="polite"></div>
-
-      <div class="lock-lang-row">
-        <button type="button" class="lock-lang-btn" id="lock-btn-en" onclick="setLanguage('en')">EN</button>
-        <button type="button" class="lock-lang-btn" id="lock-btn-sv" onclick="setLanguage('sv')">SV</button>
-      </div>
-    </div>
-  </div>
+<body>
 
   <!-- TOP CONTROLS: LANGUAGE SWITCHER ONLY -->
   <div class="top-controls">
@@ -304,7 +146,7 @@
         </div>
       </section>
 
-     <!-- RSVP FORM SECTION -->
+      <!-- RSVP FORM SECTION -->
       <section class="rsvp-section" id="rsvp">
         <h2 data-i18n="rsvpHeading">Kindly RSVP</h2>
         <p data-i18n="rsvpSub">Please let us know if you can make it by March 1st.</p>
@@ -338,7 +180,7 @@
                 <strong data-i18n="airlineUKName">From the UK</strong>
                 <p data-i18n="airlineUKDesc">Frequent direct flights from London, Birmingham, and regional airports via British Airways, easyJet, Ryanair, and Jet2.</p>
                 <div class="stay-links">
-                  <a href="https://www.jet2.com/" target="_blank" rel="noopener" data-i18n="jet2Link">From Birmingham with Jet2 &rarr;</a>
+                  <a href="https://www.jet2.com/en/cheap-flights/birmingham/malaga?from=2027-03-20&to=2027-03-21&adults=2&children&infants=0&preselect=true" target="_blank" rel="noopener" data-i18n="jet2Link">From Birmingham with Jet2 &rarr;</a>
                   <a href="https://www.ryanair.com/ie/en/trip/flights/select?adults=2&teens=0&children=0&infants=0&dateOut=2027-03-20&dateIn=2027-03-21&isConnectedFlight=false&discount=0&promoCode=&isReturn=true&originMac=LON&destinationIata=AGP&tpAdults=2&tpTeens=0&tpChildren=0&tpInfants=0&tpStartDate=2027-03-20&tpEndDate=2027-03-21&tpDiscount=0&tpPromoCode=&tpOriginMac=LON&tpDestinationIata=AGP" target="_blank" rel="noopener" data-i18n="ryanairLink">From London with Ryanair &rarr;</a>
                 </div>
               </li>
@@ -401,18 +243,11 @@
       <button type="button" onclick="closeCalModal()" class="cal-close-btn" data-i18n="closeBtn">Cancel</button>
     </div>
   </div>
-<!-- SCRIPT FOR PASSWORD GATE, THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
-  <script>
-    const INVITE_PASSWORD = "party";
-    const UNLOCK_KEY = "party_150_unlocked";
 
+  <!-- SCRIPT FOR THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
+  <script>
     const translations = {
       en: {
-        lockHeading: "Private Save the Date",
-        lockSub: "Enter the invitation password to view the party details.",
-        lockBtn: "Unlock Invite",
-        lockPlaceholder: "Password",
-        lockWrong: "Incorrect password. Please try again.",
         eyebrow: "Join Us To Celebrate",
         title: "Birthday Party",
         themeHint: "3 generations of Englund",
@@ -460,11 +295,6 @@
         closeBtn: "Cancel"
       },
       sv: {
-        lockHeading: "Privat Save the Date",
-        lockSub: "Ange inbjudningslösenordet för att se festinformationen.",
-        lockBtn: "Lås upp inbjudan",
-        lockPlaceholder: "Lösenord",
-        lockWrong: "Fel lösenord. Försök igen.",
         eyebrow: "Välkommen att fira med oss",
         title: "Födelsedagsfest",
         themeHint: "3 generationer Englund",
@@ -519,34 +349,7 @@
       nina: "style-nina.css"
     };
 
-    let currentLang = "en";
-
-    function unlockSite() {
-      const gate = document.getElementById("passwordGate");
-      if (gate) gate.classList.add("unlocked");
-      document.body.classList.remove("locked");
-      try {
-        sessionStorage.setItem(UNLOCK_KEY, "true");
-      } catch (e) {}
-    }
-
-    function checkPassword(event) {
-      event.preventDefault();
-      const input = document.getElementById("passwordInput");
-      const errorEl = document.getElementById("lockError");
-      if (!input) return;
-
-      const entered = input.value.trim().toLowerCase();
-      if (entered === INVITE_PASSWORD) {
-        if (errorEl) errorEl.textContent = "";
-        unlockSite();
-      } else {
-        if (errorEl) errorEl.textContent = (translations[currentLang] && translations[currentLang].lockWrong) || "Incorrect password.";
-        input.value = "";
-        input.focus();
-      }
-    }
-
+    // Celebrant Theme Switcher
     function setTheme(theme) {
       if (!themeFiles[theme]) return;
       const sheet = document.getElementById("themeStylesheet");
@@ -566,9 +369,9 @@
       } catch (e) {}
     }
 
+    // Language Switcher
     function setLanguage(lang) {
       const targetLang = lang === "sv" ? "sv" : "en";
-      currentLang = targetLang;
       const dict = translations[targetLang];
 
       document.documentElement.lang = targetLang;
@@ -582,29 +385,17 @@
         } catch (e) {}
       });
 
-      const passInput = document.getElementById("passwordInput");
-      if (passInput && dict && dict.lockPlaceholder) {
-        passInput.placeholder = dict.lockPlaceholder;
-      }
-
-      const isEn = targetLang === "en";
-      const isSv = targetLang === "sv";
-
-      ["btn-en", "lock-btn-en"].forEach(id => {
-        const b = document.getElementById(id);
-        if (b) b.classList.toggle("active", isEn);
-      });
-
-      ["btn-sv", "lock-btn-sv"].forEach(id => {
-        const b = document.getElementById(id);
-        if (b) b.classList.toggle("active", isSv);
-      });
+      const btnEn = document.getElementById("btn-en");
+      const btnSv = document.getElementById("btn-sv");
+      if (btnEn) btnEn.classList.toggle("active", targetLang === "en");
+      if (btnSv) btnSv.classList.toggle("active", targetLang === "sv");
 
       try {
         localStorage.setItem("preferred_lang", targetLang);
       } catch (e) {}
     }
 
+    // Modal Controls
     function openCalModal() {
       const modal = document.getElementById("calModal");
       if (modal) modal.style.display = "flex";
@@ -622,13 +413,8 @@
       }
     });
 
+    // Restore Saved Preferences & Auto-detect Browser Language
     document.addEventListener("DOMContentLoaded", () => {
-      try {
-        if (sessionStorage.getItem(UNLOCK_KEY) === "true") {
-          unlockSite();
-        }
-      } catch (e) {}
-
       let savedTheme = null;
       let savedLang = null;
 
@@ -651,6 +437,7 @@
       }
     });
 
+    // Countdown Timer
     const partyDate = new Date("2027-03-20T19:00:00").getTime();
     const timer = setInterval(function() {
       const now = new Date().getTime();
@@ -677,3 +464,6 @@
       if (minsEl) minsEl.innerText = String(minutes).padStart(2, '0');
     }, 1000);
   </script>
+
+</body>
+</html>
