@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Dynamic Theme Stylesheet -->
+  <!-- Dynamic Theme Stylesheet (defaulted to style-elin.css) -->
   <link id="themeStylesheet" rel="stylesheet" href="style-elin.css" />
 
   <style>
@@ -152,7 +152,14 @@
         <p data-i18n="rsvpSub">Please let us know if you can make it by March 1st.</p>
 
         <div class="form-container">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          <!-- Tally RSVP Embed -->
+          <iframe data-tally-src="https://tally.so/embed/GeR6zo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="RSVP"></iframe>
+          <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+          <!-- Hidden Google Form kept for backup -->
+          <div style="display: none;" aria-hidden="true">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
         </div>
       </section>
 
@@ -349,13 +356,12 @@
       nina: "style-nina.css"
     };
 
-// Celebrant Theme Switcher (temporarily locked to style-elin.css)
+    // Celebrant Theme Switcher (temporarily locked to style-elin.css)
     function setTheme(theme) {
       const sheet = document.getElementById("themeStylesheet");
       if (sheet) {
-        // Temporarily force style-elin.css for all celebrant chips:
         sheet.href = "style-elin.css";
-        // Original dynamic behavior (restore by uncommenting below and removing the line above):
+        // To restore dynamic theme switching later, uncomment the lines below and remove `sheet.href = "style-elin.css";`:
         // if (!themeFiles[theme]) return;
         // sheet.href = themeFiles[theme];
       }
@@ -429,7 +435,7 @@
       if (savedTheme && themeFiles[savedTheme]) {
         setTheme(savedTheme);
       } else {
-        setTheme("marianne");
+        setTheme("elin");
       }
 
       if (savedLang === "sv" || savedLang === "en") {
