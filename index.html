@@ -68,9 +68,167 @@
     .rsvp-section {
       margin-bottom: 3.5rem;
     }
+
+    /* Simple Password Gate Overlay */
+    body.locked {
+      overflow: hidden;
+    }
+
+    .lock-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background:
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.86)),
+        url('bg.jpg') center/cover no-repeat;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lock-overlay.unlocked {
+      display: none;
+    }
+
+    .lock-card {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #0F172A;
+      border-radius: 24px;
+      padding: 2.25rem 1.75rem;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      border: 2px solid rgba(250, 204, 21, 0.75);
+    }
+
+    .lock-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: #FEF3C7;
+      color: #92400E;
+      margin-bottom: 0.75rem;
+    }
+
+    .lock-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      margin-bottom: 0.4rem;
+      color: #0F172A;
+    }
+
+    .lock-card p {
+      font-size: 0.92rem;
+      color: #475569;
+      margin-bottom: 1.35rem;
+    }
+
+    .lock-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      border: 2px solid #CBD5E1;
+      border-radius: 14px;
+      margin-bottom: 0.85rem;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .lock-input:focus {
+      border-color: #005A9C;
+    }
+
+    .lock-submit {
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #FF5A5F, #FF9A62);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 90, 95, 0.35);
+      transition: transform 0.15s ease;
+    }
+
+    .lock-submit:hover {
+      transform: translateY(-2px);
+    }
+
+    .lock-error {
+      min-height: 1.25rem;
+      margin-top: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #DC2626;
+    }
+
+    .lock-lang-row {
+      display: inline-flex;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+    }
+
+    .lock-lang-btn {
+      background: transparent;
+      border: 1px solid #CBD5E1;
+      color: #475569;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .lock-lang-btn.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
   </style>
 </head>
-<body>
+<body class="locked">
+
+  <!-- PASSWORD GATE OVERLAY -->
+  <div id="passwordGate" class="lock-overlay" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+    <div class="lock-card">
+      <div class="lock-badge">🎈 150</div>
+      <h2 id="lockTitle" data-i18n="lockHeading">Private Save the Date</h2>
+      <p data-i18n="lockSub">Enter the invitation password to view the party details.</p>
+
+      <form id="passwordForm" onsubmit="checkPassword(event)">
+        <input
+          type="password"
+          id="passwordInput"
+          class="lock-input"
+          autocomplete="current-password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit" class="lock-submit" data-i18n="lockBtn">Unlock Invite</button>
+      </form>
+
+      <div id="lockError" class="lock-error" aria-live="polite"></div>
+
+      <div class="lock-lang-row">
+        <button type="button" class="lock-lang-btn" id="lock-btn-en" onclick="setLanguage('en')">EN</button>
+        <button type="button" class="lock-lang-btn" id="lock-btn-sv" onclick="setLanguage('sv')">SV</button>
+      </div>
+    </div>
+  </div>
 
   <!-- TOP CONTROLS: LANGUAGE SWITCHER ONLY -->
   <div class="top-controls">
@@ -217,11 +375,9 @@
         </details>
         <details>
           <summary data-i18n="faq3Q">Dietary requirements?</summary>
-          <p data-i18n="faq3A">Please let us know of any allergies or dietary restrictions when filling out your RSVP form.</p>
+          <p data-i18n="faq3A">Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.</p>
         </details>
       </section>
-
-
 
       <footer>
         <span data-i18n="footerText">Questions? Reach out directly via WhatsApp or email.</span>
@@ -246,10 +402,18 @@
     </div>
   </div>
 
-  <!-- SCRIPT FOR THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
+  <!-- SCRIPT FOR PASSWORD GATE, THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
   <script>
+    const INVITE_PASSWORD = "partytime";
+    const UNLOCK_KEY = "party_150_unlocked";
+
     const translations = {
       en: {
+        lockHeading: "Private Save the Date",
+        lockSub: "Enter the invitation password to view the party details.",
+        lockBtn: "Unlock Invite",
+        lockPlaceholder: "Password",
+        lockWrong: "Incorrect password. Please try again.",
         eyebrow: "Join Us To Celebrate",
         title: "Birthday Party",
         themeHint: "3 generations of Englund",
@@ -285,7 +449,7 @@
         faq2Q: "Is there parking available?",
         faq2A: "Yes, plenty of free parking within Plaza de Toros.",
         faq3Q: "Dietary requirements?",
-        faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form.",
+        faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
         rsvpHeading: "Kindly RSVP",
         rsvpSub: "Please let us know if you can make it by March 1st.",
         footerText: "Questions? Reach out directly via WhatsApp or email.",
@@ -297,6 +461,11 @@
         closeBtn: "Cancel"
       },
       sv: {
+        lockHeading: "Privat Save the Date",
+        lockSub: "Ange inbjudningslösenordet för att se festinformationen.",
+        lockBtn: "Lås upp inbjudan",
+        lockPlaceholder: "Lösenord",
+        lockWrong: "Fel lösenord. Försök igen.",
         eyebrow: "Välkommen att fira med oss",
         title: "Födelsedagsfest",
         themeHint: "3 generationer Englund",
@@ -314,158 +483,4 @@
         calButton: "Lägg till i kalender",
         hotelsHeading: "🏨 Boende",
         hotel2Name: "Hotell & Boenden i Fuengirola",
-        hotel2Desc: "Ett brett utbud av charmiga hotell, strandnära lägenheter och semesterboenden i Fuengirola på smidigt avstånd från lokalen.",
-        googleHotelsLink: "Sök hotell på Google &rarr;",
-        airbnbLink: "Se Airbnb i Fuengirola &rarr;",
-        airlinesHeading: "✈️ Resa till Málaga (AGP)",
-        airlineUKName: "Från Storbritannien",
-        airlineUKDesc: "Många dagliga direktflyg från London, Birmingham och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
-        jet2Link: "Från Birmingham med Jet2 &rarr;",
-        ryanairLink: "Från London med Ryanair &rarr;",
-        airlineSVName: "Från Sverige",
-        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
-        galleryHeading: "Fotomotiv & Minnen",
-        gallerySub: "Vi skulle älska om du vill komma och fira med oss",
-        faqHeading: "Vanliga Frågor",
-        faq1Q: "Är barn välkomna?",
-        faq1A: "Tyvärr inte den här gången.",
-        faq2Q: "Finns det parkering?",
-        faq2A: "Ja, det finns gott om gratis parkering inne vid Plaza de Toros.",
-        faq3Q: "Specialkost?",
-        faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret.",
-        rsvpHeading: "Vänligen OSA",
-        rsvpSub: "Meddela oss om du kan komma senast den 1 mars.",
-        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post.",
-        modalTitle: "Lägg till i kalender",
-        modalSub: "Välj din kalendertjänst:",
-        optGoogle: "Google Kalender",
-        optOutlook: "Outlook Kalender",
-        optApple: "Apple / iCal (.ics)",
-        closeBtn: "Avbryt"
-      }
-    };
-
-    const themeFiles = {
-      marianne: "style-marianne.css",
-      elin: "style-elin.css",
-      nina: "style-nina.css"
-    };
-
-    // Celebrant Theme Switcher
-    function setTheme(theme) {
-      if (!themeFiles[theme]) return;
-      const sheet = document.getElementById("themeStylesheet");
-      if (sheet) {
-        sheet.href = themeFiles[theme];
-      }
-
-      ["marianne", "elin", "nina"].forEach(name => {
-        const btn = document.getElementById("theme-" + name);
-        if (btn) {
-          btn.classList.toggle("active", name === theme);
-        }
-      });
-
-      try {
-        localStorage.setItem("preferred_theme", theme);
-      } catch (e) {}
-    }
-
-    // Language Switcher
-    function setLanguage(lang) {
-      const targetLang = translations[lang] ? lang : "en";
-      const dict = translations[targetLang];
-
-      document.documentElement.lang = targetLang;
-
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (key && Object.prototype.hasOwnProperty.call(dict, key)) {
-          el.innerHTML = dict[key];
-        }
-      });
-
-      const btnEn = document.getElementById("btn-en");
-      const btnSv = document.getElementById("btn-sv");
-      if (btnEn) btnEn.classList.toggle("active", targetLang === "en");
-      if (btnSv) btnSv.classList.toggle("active", targetLang === "sv");
-
-      try {
-        localStorage.setItem("preferred_lang", targetLang);
-      } catch (e) {}
-    }
-
-    // Modal Controls
-    function openCalModal() {
-      const modal = document.getElementById("calModal");
-      if (modal) modal.style.display = "flex";
-    }
-    function closeCalModal() {
-      const modal = document.getElementById("calModal");
-      if (modal) modal.style.display = "none";
-    }
-    window.addEventListener("click", function(event) {
-      const modal = document.getElementById("calModal");
-      if (modal && event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    // Restore Saved Preferences & Auto-detect Browser Language
-    document.addEventListener("DOMContentLoaded", () => {
-      let savedTheme = null;
-      let savedLang = null;
-
-      try {
-        savedTheme = localStorage.getItem("preferred_theme");
-        savedLang = localStorage.getItem("preferred_lang");
-      } catch (e) {}
-
-      if (savedTheme && themeFiles[savedTheme]) {
-        setTheme(savedTheme);
-      } else {
-        setTheme("marianne");
-      }
-
-      if (savedLang && translations[savedLang]) {
-        setLanguage(savedLang);
-      } else {
-        const browserLang = navigator.language || navigator.userLanguage || "";
-        if (browserLang.toLowerCase().startsWith("sv")) {
-          setLanguage("sv");
-        } else {
-          setLanguage("en");
-        }
-      }
-    });
-
-    // Countdown Timer
-    const partyDate = new Date("2027-03-20T19:00:00").getTime();
-    const timer = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = partyDate - now;
-      const countdownEl = document.getElementById("countdown");
-      if (!countdownEl) return;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        countdownEl.innerHTML = "<p><strong>The party has started! / Festen har börjat!</strong></p>";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-      const daysEl = document.getElementById("days");
-      const hoursEl = document.getElementById("hours");
-      const minsEl = document.getElementById("minutes");
-
-      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
-      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
-      if (minsEl) minsEl.innerText = String(minutes).padStart(2, '0');
-    }, 1000);
-  </script>
-
-</body>
-</html>
+        hotel2Desc: "Ett brett utbud av charmiga hotell, strand
