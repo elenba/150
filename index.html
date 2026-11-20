@@ -45,6 +45,24 @@
       gap: 0.35rem;
       margin-left: 0;
     }
+
+    .stay-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.15rem;
+    }
+
+    .stay-links a {
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .stay-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -134,8 +152,12 @@
                 <p data-i18n="hotel1Desc">Upscale luxury resort nearby with panoramic views, spa, and exceptional dining.</p>
               </li>
               <li>
-                <strong data-i18n="hotel2Name">Central Fuengirola Hotels</strong>
-                <p data-i18n="hotel2Desc">A wide selection of boutique hotels and seaside apartments located right in central Fuengirola within walking distance of the venue.</p>
+                <strong data-i18n="hotel2Name">Central Fuengirola Hotels &amp; Stays</strong>
+                <p data-i18n="hotel2Desc">A wide selection of boutique hotels, seaside apartments, and holiday homes around Fuengirola within easy reach of the venue.</p>
+                <div class="stay-links">
+                  <a href="https://www.google.com/travel/search?q=fuengirola&gsas=1&ts=CAESCgoCCAMKAggDEAAaNwoZEhcKCS9tLzAyY3I2azoKRnVlbmdpcm9sYRIaEhQKBwjrDxADGBQSBwjrDxADGBUYATICCAI&ved=0CAAQ5JsGahcKEwiQq66wuZaYAxUAAAAAHQAAAAAQBA" target="_blank" rel="noopener" data-i18n="googleHotelsLink">Search Hotels on Google &rarr;</a>
+                  <a href="https://www.airbnb.co.uk/s/Fuengirola--Spain/homes?place_id=ChIJ-_QxNj_icg0RFfCZQyXD4JY&refinement_paths%5B%5D=%2Fhomes&location_bb=QhJb4sCS3hpCEhOKwJRfLg%3D%3D&acp_id=81420e40-9354-419b-92e0-86c509b6f945&date_picker_type=calendar&checkin=2027-03-20&checkout=2027-03-21&adults=2&search_type=autocomplete_click" target="_blank" rel="noopener" data-i18n="airbnbLink">Browse Airbnb in Fuengirola &rarr;</a>
+                </div>
               </li>
             </ul>
           </div>
@@ -239,169 +261,10 @@
         hotelsHeading: "🏨 Where to Stay",
         hotel1Name: "Higuerón Hotel Málaga Resort",
         hotel1Desc: "Upscale luxury resort nearby with panoramic views, spa, and exceptional dining.",
-        hotel2Name: "Central Fuengirola Hotels",
-        hotel2Desc: "A wide selection of boutique hotels and seaside apartments located right in central Fuengirola within walking distance of the venue.",
+        hotel2Name: "Central Fuengirola Hotels & Stays",
+        hotel2Desc: "A wide selection of boutique hotels, seaside apartments, and holiday homes around Fuengirola within easy reach of the venue.",
+        googleHotelsLink: "Search Hotels on Google &rarr;",
+        airbnbLink: "Browse Airbnb in Fuengirola &rarr;",
         airlinesHeading: "✈️ Getting to Málaga (AGP)",
         airlineUKName: "From the UK",
-        airlineUKDesc: "Frequent direct flights from London, Birmingham, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
-        airlineSVName: "From Sweden",
-        airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.",
-        galleryHeading: "Photo Gallery",
-        gallerySub: "We would love for you to join us",
-        faqHeading: "Frequently Asked Questions",
-        faq1Q: "Are children welcome?",
-        faq1A: "Not this time.",
-        faq2Q: "Is there parking available?",
-        faq2A: "Yes, plenty of free parking within Plaza de Toros.",
-        faq3Q: "Dietary requirements?",
-        faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
-        rsvpHeading: "Kindly RSVP",
-        rsvpSub: "Please let us know if you can make it by January 1st.",
-        footerText: "Questions? Reach out directly via WhatsApp or email.",
-        modalTitle: "Add to Calendar",
-        modalSub: "Choose your preferred calendar service:",
-        optGoogle: "Google Calendar",
-        optOutlook: "Outlook Calendar",
-        optApple: "Apple / iCal (.ics)",
-        closeBtn: "Cancel"
-      },
-      sv: {
-        eyebrow: "Välkommen att fira med oss",
-        title: "Födelsedagsfest",
-        themeHint: "3 generationer",
-        subtitle: "God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
-        rsvpBtn: "OSA Här",
-        daysLabel: "Dagar",
-        hoursLabel: "Timmar",
-        minsLabel: "Min",
-        whenTitle: "När",
-        whenText: "Lördag 20 mars 2027<br>Kl. 19:00 – Sent",
-        whereTitle: "Var",
-        mapLink: "Visa på Google Maps &rarr;",
-        dressTitle: "Klädsel",
-        dressText: "Klädsel: Vårdad klädsel / Festligt<br>Bekväma skor rekommenderas",
-        calButton: "Lägg till i kalender",
-        hotelsHeading: "🏨 Boende",
-        hotel1Name: "Higuerón Hotel Málaga Resort",
-        hotel1Desc: "Exklusivt resort- och spahotell i närheten med panoramautsikt och förstklassig restaurang.",
-        hotel2Name: "Hotell i centrala Fuengirola",
-        hotel2Desc: "Ett brett utbud av charmiga hotell och strandnära lägenheter mitt i centrala Fuengirola på gångavstånd från lokalen.",
-        airlinesHeading: "✈️ Resa till Málaga (AGP)",
-        airlineUKName: "Från Storbritannien",
-        airlineUKDesc: "Många dagliga direktflyg från London, Birmingham och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
-        airlineSVName: "Från Sverige",
-        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
-        galleryHeading: "Fotomotiv & Minnen",
-        gallerySub: "Vi skulle älska om du vill komma och fira med oss",
-        faqHeading: "Vanliga Frågor",
-        faq1Q: "Är barn välkomna?",
-        faq1A: "Inte den här gången.",
-        faq2Q: "Finns det parkering?",
-        faq2A: "Ja, det finns gott om gratis parkering inne vid Plaza de Toros.",
-        faq3Q: "Specialkost?",
-        faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
-        rsvpHeading: "Vänligen OSA",
-        rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
-        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post.",
-        modalTitle: "Lägg till i kalender",
-        modalSub: "Välj din kalendertjänst:",
-        optGoogle: "Google Kalender",
-        optOutlook: "Outlook Kalender",
-        optApple: "Apple / iCal (.ics)",
-        closeBtn: "Avbryt"
-      }
-    };
-
-    const themeFiles = {
-      marianne: "style-marianne.css",
-      elin: "style-elin.css",
-      nina: "style-nina.css"
-    };
-
-    // Celebrant Theme Switcher
-    function setTheme(theme) {
-      if (!themeFiles[theme]) return;
-      const sheet = document.getElementById("themeStylesheet");
-      sheet.href = themeFiles[theme];
-
-      ["marianne", "elin", "nina"].forEach(name => {
-        const btn = document.getElementById("theme-" + name);
-        if (btn) {
-          btn.classList.toggle("active", name === theme);
-        }
-      });
-
-      localStorage.setItem("preferred_theme", theme);
-    }
-
-    // Language Switcher
-    function setLanguage(lang) {
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-      document.getElementById("btn-en").classList.toggle("active", lang === 'en');
-      document.getElementById("btn-sv").classList.toggle("active", lang === 'sv');
-      localStorage.setItem("preferred_lang", lang);
-    }
-
-    // Modal Controls
-    function openCalModal() {
-      document.getElementById("calModal").style.display = "flex";
-    }
-    function closeCalModal() {
-      document.getElementById("calModal").style.display = "none";
-    }
-    window.onclick = function(event) {
-      const modal = document.getElementById("calModal");
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    }
-
-    // Restore Saved Preferences & Auto-detect Browser Language
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedTheme = localStorage.getItem("preferred_theme");
-      if (savedTheme && themeFiles[savedTheme]) {
-        setTheme(savedTheme);
-      }
-
-      const savedLang = localStorage.getItem("preferred_lang");
-      if (savedLang && translations[savedLang]) {
-        setLanguage(savedLang);
-      } else {
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang && browserLang.toLowerCase().startsWith("sv")) {
-          setLanguage("sv");
-        } else {
-          setLanguage("en");
-        }
-      }
-    });
-
-    // Countdown Timer
-    const partyDate = new Date("2027-03-20T19:00:00").getTime();
-    const timer = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = partyDate - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "<p><strong>The party has started! / Festen har börjat!</strong></p>";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-      document.getElementById("days").innerText = String(days).padStart(2, '0');
-      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    }, 1000);
-  </script>
-
-</body>
-</html>
+        airlineUKDesc: "Frequent direct flights from London, Birmingham, and regional airports via British Airways, easy
