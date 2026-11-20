@@ -21,6 +21,31 @@
   
   <!-- Dynamic Theme Stylesheet -->
   <link id="themeStylesheet" rel="stylesheet" href="style-marianne.css" />
+
+  <style>
+    /* Ensures "= 150" always sits on its own dedicated row below the three names */
+    .equation-row {
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .equation-names {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .equation-total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 0.35rem;
+      margin-left: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -41,15 +66,17 @@
       <div class="subtitle-pill">
         <div class="theme-hint" data-i18n="themeHint">3 generations</div>
         <div class="equation-row" role="group" aria-label="Choose celebrant theme">
-          <button type="button" class="name-chip active" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
-          <span class="math-symbol">+</span>
-          <button type="button" class="name-chip" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
-          <span class="math-symbol">+</span>
-          <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
-          <span class="equation-total">
+          <div class="equation-names">
+            <button type="button" class="name-chip active" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
+            <span class="math-symbol">+</span>
+            <button type="button" class="name-chip" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
+            <span class="math-symbol">+</span>
+            <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
+          </div>
+          <div class="equation-total">
             <span class="math-symbol">=</span>
             <span class="total-number">150</span>
-          </span>
+          </div>
         </div>
 
         <p class="subtitle" data-i18n="subtitle">
@@ -216,16 +243,16 @@
         hotel2Desc: "A wide selection of boutique hotels and seaside apartments located right in central Fuengirola within walking distance of the venue.",
         airlinesHeading: "✈️ Getting to Málaga (AGP)",
         airlineUKName: "From the UK",
-        airlineUKDesc: "Frequent direct flights daily from London, Manchester, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
+        airlineUKDesc: "Frequent direct flights from London, Birmingham, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
         airlineSVName: "From Sweden",
         airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.",
         galleryHeading: "Photo Gallery",
-        gallerySub: "A glimpse of our journey together",
+        gallerySub: "We would love for you to join us",
         faqHeading: "Frequently Asked Questions",
         faq1Q: "Are children welcome?",
-        faq1A: "Please check your invitation details or reach out to us directly regarding family attendance.",
+        faq1A: "Not this time.",
         faq2Q: "Is there parking available?",
-        faq2A: "Yes, street parking and nearby parking garages are available around the Plaza de Toros.",
+        faq2A: "Yes, plenty of free parking within Plaza de Toros.",
         faq3Q: "Dietary requirements?",
         faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
         rsvpHeading: "Kindly RSVP",
@@ -261,16 +288,16 @@
         hotel2Desc: "Ett brett utbud av charmiga hotell och strandnära lägenheter mitt i centrala Fuengirola på gångavstånd från lokalen.",
         airlinesHeading: "✈️ Resa till Málaga (AGP)",
         airlineUKName: "Från Storbritannien",
-        airlineUKDesc: "Många dagliga direktflyg från London, Manchester och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
+        airlineUKDesc: "Många dagliga direktflyg från London, Birmingham och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
         airlineSVName: "Från Sverige",
         airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
         galleryHeading: "Fotomotiv & Minnen",
-        gallerySub: "Ett litet smakprov längs vägen",
+        gallerySub: "Vi skulle älska om du vill komma och fira med oss",
         faqHeading: "Vanliga Frågor",
         faq1Q: "Är barn välkomna?",
-        faq1A: "Vänligen kontrollera din inbjudan eller hör av dig direkt till oss om familjen följer med.",
+        faq1A: "Inte den här gången.",
         faq2Q: "Finns det parkering?",
-        faq2A: "Ja, gatuparkering och närliggande parkeringshus finns runt Plaza de Toros.",
+        faq2A: "Ja, det finns gott om gratis parkering inne vid Plaza de Toros.",
         faq3Q: "Specialkost?",
         faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
         rsvpHeading: "Vänligen OSA",
