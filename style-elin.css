@@ -383,4 +383,349 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 3.5
+  margin-bottom: 3.5rem;
+}
+
+.detail-card {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  min-width: 0;
+}
+
+.detail-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--brass-gold);
+}
+
+.detail-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: var(--link-gold);
+}
+
+.detail-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.detail-card a,
+.stay-links a {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: var(--link-gold);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-card a:hover,
+.stay-links a:hover {
+  color: #FDE68A;
+  text-decoration: underline;
+}
+
+/* CALENDAR BUTTON & MODAL */
+.cal-btn-custom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #FF2E4C, #E5A93C);
+  color: #111114;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.cal-btn-custom:hover {
+  transform: translateY(-2px);
+}
+
+.cal-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.cal-modal-box {
+  background: #18181C;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  border: 1.5px solid var(--brass-border);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.7);
+}
+
+.cal-modal-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--link-gold);
+}
+
+.cal-modal-box p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.cal-option-btn {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+  background: #222228;
+  border: 1px solid #32323A;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.cal-option-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* TRAVEL & STAY */
+.travel-section {
+  margin-bottom: 3.5rem;
+}
+
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.travel-card {
+  padding: 2.35rem 2rem;
+  text-align: left;
+  min-width: 0;
+}
+
+.travel-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.65rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(229, 169, 60, 0.3);
+  color: #FFFFFF;
+}
+
+.travel-list {
+  list-style: none;
+}
+
+.travel-list li {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.travel-list li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.travel-list strong {
+  display: block;
+  color: var(--link-gold);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.travel-list p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* GALLERY */
+.gallery-section {
+  padding: 2.75rem 2rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.gallery-section > p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #141418;
+  border: 1.5px solid rgba(229, 169, 60, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.03);
+}
+
+/* FAQ */
+.faq-section {
+  padding: 2.75rem 2.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.faq-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+details {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.2rem;
+}
+
+details:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+summary {
+  font-weight: 700;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  list-style: none;
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  font-size: 1.3rem;
+  color: var(--link-gold);
+  font-weight: 800;
+}
+
+details[open] summary::after {
+  content: '−';
+}
+
+details p {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* RSVP */
+.rsvp-section {
+  padding: 2.75rem 2rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  width: 100%;
+}
+
+.rsvp-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.rsvp-section > p {
+  color: var(--text-muted);
+  margin-bottom: 2.25rem;
+  font-size: 1rem;
+}
+
+.form-container {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1.5px solid rgba(229, 169, 60, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.form-container iframe {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: 777px;
+  margin: 0 auto;
+  border: none;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
