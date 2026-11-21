@@ -94,6 +94,7 @@ body {
 }
 
 /* HERO SECTION */
+/* Desktop hero image */
 .hero-banner {
   position: relative;
   background-image: url('bg.jpg');
@@ -107,8 +108,15 @@ body {
   padding: 5.5rem 1.25rem 4.5rem;
   text-align: center;
   color: #FFFFFF;
-  border-bottom: 2px solid var(--brass-gold);
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Mobile hero image (swaps to portrait crop on phones) */
+@media (max-width: 600px) {
+  .hero-banner {
+    background-image: url('bg-mobile.jpg');
+    background-position: center top;
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 600px) {
