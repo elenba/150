@@ -362,8 +362,8 @@
       if (sheet) {
         sheet.href = "style-elin.css";
         // To restore dynamic theme switching later, uncomment the lines below and remove `sheet.href = "style-elin.css";`:
-        // if (!themeFiles[theme]) return;
-        // sheet.href = themeFiles[theme];
+        if (!themeFiles[theme]) return;
+        sheet.href = themeFiles[theme];
       }
 
       ["marianne", "elin", "nina"].forEach(name => {
@@ -377,6 +377,19 @@
         localStorage.setItem("preferred_theme", theme);
       } catch (e) {}
     }
+    document.addEventListener("DOMContentLoaded", () => 
+      {
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("preferred_theme");
+  } catch (e) {}
+
+  if (savedTheme && themeFiles[savedTheme]) {
+    setTheme(savedTheme);
+  } else {
+    setTheme("elin");
+  }
+});
 
     // Language Switcher
     function setLanguage(lang) {
