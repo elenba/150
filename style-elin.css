@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Great+Vibes&display=swap');
 
 :root {
   --amp-black: #121214;
@@ -159,7 +159,7 @@ body {
 
 h1 {
   font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
-  font-style: normal;
+  font-style: italic;
   font-weight: 400;
   letter-spacing: 0.015em;
   font-size: clamp(3.1rem, 7.8vw, 5.1rem);
@@ -262,7 +262,7 @@ h1 {
 
 .total-number {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
+  font-style: italic;
   font-size: clamp(2.3rem, 5.2vw, 3.1rem);
   font-weight: 700;
   line-height: 1;
@@ -331,7 +331,7 @@ h1 {
 .time-box span {
   display: block;
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
+  font-style: italic;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--link-gold);
@@ -366,7 +366,6 @@ h1 {
   position: relative;
   background-color: var(--grille-bg);
   background-image:
-    /* Clean champagne/brass trim bar along lower cabinet edge */
     linear-gradient(
       to top,
       transparent 14px,
@@ -374,7 +373,6 @@ h1 {
       rgba(201, 154, 70, 0.55) 15.5px,
       transparent 15.5px
     ),
-    /* Tight woven speaker grille cross-mesh */
     repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.032) 0px,
@@ -449,12 +447,13 @@ h1 {
 }
 
 .detail-card h3 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 1.55rem;
-  margin-bottom: 0.6rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: 2.15rem;
+  line-height: 1.15;
+  margin-bottom: 0.55rem;
   color: var(--link-gold);
 }
 
@@ -535,10 +534,11 @@ h1 {
 }
 
 .cal-modal-box h3 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.7rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 1.15;
   margin-bottom: 0.5rem;
   color: var(--link-gold);
 }
@@ -599,13 +599,14 @@ h1 {
 }
 
 .travel-card h2 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 1.9rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: 2.45rem;
+  line-height: 1.15;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.65rem;
+  padding-bottom: 0.55rem;
   padding-left: 1.55rem;
   padding-right: 0;
   border-bottom: 1px solid rgba(201, 154, 70, 0.32);
@@ -649,11 +650,12 @@ h1 {
 }
 
 .gallery-section h2 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 2.15rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: 2.75rem;
+  line-height: 1.15;
   margin-bottom: 0.4rem;
   color: var(--link-gold);
 }
@@ -718,11 +720,12 @@ h1 {
 }
 
 .faq-section h2 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 2.15rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: 2.75rem;
+  line-height: 1.15;
   margin-bottom: 2rem;
   text-align: center;
   color: var(--link-gold);
@@ -783,11 +786,12 @@ details p {
 }
 
 .rsvp-section h2 {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 2.25rem;
+  font-family: 'Great Vibes', 'Cormorant Garamond', 'Playfair Display', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  font-size: 2.85rem;
+  line-height: 1.15;
   margin-bottom: 0.4rem;
   color: var(--link-gold);
 }
