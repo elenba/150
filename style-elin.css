@@ -31,7 +31,6 @@ body {
   color: var(--text-main);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  /* Matte charcoal backdrop with fine pebbled tolex grain */
   background-color: #161619;
   background-image:
     radial-gradient(circle at 50% 18%, rgba(223, 180, 90, 0.06), transparent 60%),
@@ -93,13 +92,12 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* HERO SECTION */
-/* Desktop hero image */
+/* HERO SECTION — DESKTOP */
 .hero-banner {
   position: relative;
   background-image: url('bg.jpg');
   background-size: cover;
-  background-position: center top;
+  background-position: center 75%;
   min-height: 85vh;
   display: flex;
   flex-direction: column;
@@ -108,22 +106,8 @@ body {
   padding: 5.5rem 1.25rem 4.5rem;
   text-align: center;
   color: #FFFFFF;
-}
-
-/* Mobile hero image (swaps to portrait crop on phones) */
-@media (max-width: 600px) {
-  .hero-banner {
-    background-image: url('bg-mobile.jpg');
-    background-position: center top;
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-banner {
-    background-position: 62% top;
-    justify-content: flex-start;
-  }
+  border-bottom: 2px solid var(--brass-gold);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .hero-banner::after {
@@ -133,7 +117,7 @@ body {
   background: linear-gradient(
     to bottom,
     rgba(14, 14, 17, 0.45) 0%,
-    rgba(14, 14, 17, 0.14) 45%,
+    rgba(14, 14, 17, 0.12) 45%,
     rgba(14, 14, 17, 0.76) 100%
   );
   pointer-events: none;
@@ -145,6 +129,38 @@ body {
   z-index: 2;
   max-width: 740px;
   width: 100%;
+}
+
+/* HERO SECTION — MOBILE ("PLAZA DE TOROS" WINDOW LAYOUT) */
+@media (max-width: 600px) {
+  .hero-banner {
+    background-image: url('bg-mobile.jpg');
+    background-position: center top;
+    min-height: 92vh;
+    padding: 4.5rem 1.15rem 3rem;
+    justify-content: space-between;
+  }
+
+  .hero-banner::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 14, 17, 0.55) 0%,
+      rgba(14, 14, 17, 0.05) 36%,
+      rgba(14, 14, 17, 0.45) 68%,
+      rgba(14, 14, 17, 0.85) 100%
+    );
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 82vh;
+  }
+
+  .hero-header {
+    margin-bottom: 13.5rem;
+  }
 }
 
 .eyebrow {
@@ -180,7 +196,7 @@ h1 {
 /* Semi-transparent pill so background image remains visible */
 .subtitle-pill {
   display: inline-block;
-  background: rgba(17, 17, 20, 0.52);
+  background: rgba(17, 17, 20, 0.56);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1.5px solid rgba(201, 154, 70, 0.55);
@@ -218,7 +234,6 @@ h1 {
   gap: 0.45rem;
 }
 
-/* Knob-inspired pills */
 .name-chip {
   background: rgba(24, 24, 28, 0.78);
   border: 2px solid rgba(223, 180, 90, 0.35);
@@ -240,7 +255,6 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Active pill styled like a brushed-brass cap inside a dark knob rim */
 .name-chip.active {
   background: var(--brass-knob-cap);
   color: #14120E;
@@ -470,7 +484,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-/* High-contrast brass-gold links across all dark sections */
 .detail-card a,
 .travel-card a,
 .stay-links a {
@@ -650,7 +663,7 @@ h1 {
   font-size: 0.9rem;
 }
 
-/* GALLERY — SUBTLE SEPIA & WARM BRASS GLAZE */
+/* GALLERY */
 .gallery-section {
   padding: 2.75rem 2rem 3rem;
   margin-bottom: 3.5rem;
