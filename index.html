@@ -3,16 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Save the date | Birthday Party in Spain 🎈</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+  <title>Save the date | Birthday Party in Spain</title>
+  <link rel="canonical" href="https://150.apped.uk/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23141418%22/><text x=%2250%25%22 y=%2264%25%22 text-anchor=%22middle%22 fill=%22%23DFB45A%22 font-family=%22Georgia,serif%22 font-weight=%22bold%22 font-size=%2244%22>150</text></svg>">
 
   <!-- Link Preview (Open Graph & Social Sharing) -->
-  <meta property="og:title" content="🎈 Save the date | Birthday Party in Spain 🎈" />
+  <meta property="og:site_name" content="150 Birthday Celebration" />
+  <meta property="og:title" content="Save the date | Birthday Party in Spain" />
   <meta property="og:description" content="Marianne 80 + Elin 50 + Nina 20 = 150! March 20, 2027 in Fuengirola, Málaga." />
   <meta property="og:image" content="https://150.apped.uk/bg.jpg" />
-  <meta property="og:url" content="https://150.apped.uk" />
+  <meta property="og:image:secure_url" content="https://150.apped.uk/bg.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Plaza de Toros in Fuengirola, Málaga" />
+  <meta property="og:url" content="https://150.apped.uk/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Save the date | Birthday Party in Spain" />
+  <meta name="twitter:description" content="Marianne 80 + Elin 50 + Nina 20 = 150! March 20, 2027 in Fuengirola, Málaga." />
+  <meta name="twitter:image" content="https://150.apped.uk/bg.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,39 +93,43 @@
   <!-- HERO BANNER -->
   <section class="hero-banner">
     <div class="hero-content">
-      <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
-      <h1 data-i18n="title">Birthday Party</h1>
+      <div class="hero-header">
+        <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
+        <h1 data-i18n="title">Birthday Party</h1>
+      </div>
       
-      <div class="subtitle-pill">
-        <div class="theme-hint" data-i18n="themeHint">3 generations of Englund</div>
-        <div class="equation-row" role="group" aria-label="Choose celebrant theme">
-          <div class="equation-names">
-            <button type="button" class="name-chip active" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
-            <span class="math-symbol">+</span>
-            <button type="button" class="name-chip" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
-            <span class="math-symbol">+</span>
-            <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
+      <div class="hero-lower">
+        <div class="subtitle-pill">
+          <div class="theme-hint" data-i18n="themeHint">3 generations of Englund</div>
+          <div class="equation-row" role="group" aria-label="Choose celebrant theme">
+            <div class="equation-names">
+              <button type="button" class="name-chip" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
+              <span class="math-symbol">+</span>
+              <button type="button" class="name-chip active" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
+              <span class="math-symbol">+</span>
+              <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
+            </div>
+            <div class="equation-total">
+              <span class="math-symbol">=</span>
+              <span class="total-number">150</span>
+            </div>
           </div>
-          <div class="equation-total">
-            <span class="math-symbol">=</span>
-            <span class="total-number">150</span>
-          </div>
+
+          <p class="subtitle" data-i18n="subtitle">
+            Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
+          </p>
         </div>
 
-        <p class="subtitle" data-i18n="subtitle">
-          Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
-        </p>
-      </div>
+        <div>
+          <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
+        </div>
 
-      <div>
-        <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
-      </div>
-
-      <!-- LIVE COUNTDOWN TIMER -->
-      <div class="countdown" id="countdown">
-        <div class="time-box"><span id="days">00</span><small data-i18n="daysLabel">Days</small></div>
-        <div class="time-box"><span id="hours">00</span><small data-i18n="hoursLabel">Hours</small></div>
-        <div class="time-box"><span id="minutes">00</span><small data-i18n="minsLabel">Mins</small></div>
+        <!-- LIVE COUNTDOWN TIMER -->
+        <div class="countdown" id="countdown">
+          <div class="time-box"><span id="days">00</span><small data-i18n="daysLabel">Days</small></div>
+          <div class="time-box"><span id="hours">00</span><small data-i18n="hoursLabel">Hours</small></div>
+          <div class="time-box"><span id="minutes">00</span><small data-i18n="minsLabel">Mins</small></div>
+        </div>
       </div>
     </div>
   </section>
@@ -193,7 +207,7 @@
               </li>
               <li>
                 <strong data-i18n="airlineSVName">From Sweden</strong>
-                <p data-i18n="airlineSVDesc">Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.</p>
+                <p data-i18n="airlineSVDesc">Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga operated by SAS, Norwegian, and Ryanair.</p>
               </li>
             </ul>
           </div>
@@ -281,7 +295,7 @@
         jet2Link: "From Birmingham with Jet2 &rarr;",
         ryanairLink: "From London with Ryanair &rarr;",
         airlineSVName: "From Sweden",
-        airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.",
+        airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga operated by SAS, Norwegian, and Ryanair.",
         galleryHeading: "Photo Gallery",
         gallerySub: "We would love for you to join us",
         faqHeading: "Frequently Asked Questions",
@@ -328,7 +342,7 @@
         jet2Link: "Från Birmingham med Jet2 &rarr;",
         ryanairLink: "Från London med Ryanair &rarr;",
         airlineSVName: "Från Sverige",
-        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
+        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga med SAS, Norwegian och Ryanair.",
         galleryHeading: "Fotomotiv & Minnen",
         gallerySub: "Vi skulle älska om du vill komma och fira med oss",
         faqHeading: "Vanliga Frågor",
@@ -356,13 +370,11 @@
       nina: "style-nina.css"
     };
 
-    // Celebrant Theme Switcher (temporarily locked to style-elin.css)
+    // Celebrant Theme Switcher
     function setTheme(theme) {
+      if (!themeFiles[theme]) return;
       const sheet = document.getElementById("themeStylesheet");
       if (sheet) {
-        sheet.href = "style-elin.css";
-        // To restore dynamic theme switching later, uncomment the lines below and remove `sheet.href = "style-elin.css";`:
-        if (!themeFiles[theme]) return;
         sheet.href = themeFiles[theme];
       }
 
@@ -377,19 +389,6 @@
         localStorage.setItem("preferred_theme", theme);
       } catch (e) {}
     }
-    document.addEventListener("DOMContentLoaded", () => 
-      {
-  let savedTheme = null;
-  try {
-    savedTheme = localStorage.getItem("preferred_theme");
-  } catch (e) {}
-
-  if (savedTheme && themeFiles[savedTheme]) {
-    setTheme(savedTheme);
-  } else {
-    setTheme("elin");
-  }
-});
 
     // Language Switcher
     function setLanguage(lang) {
@@ -435,7 +434,7 @@
       }
     });
 
-    // Restore Saved Preferences & Auto-detect Browser Language
+    // Restore Saved Preferences & Auto-detect Browser Language (defaults to style-elin)
     document.addEventListener("DOMContentLoaded", () => {
       let savedTheme = null;
       let savedLang = null;
